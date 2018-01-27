@@ -16,6 +16,21 @@ public class FlyingBird : MonoBehaviour {
 		transform.position = launchPoint.transform.position;
 		this.target = target;
 
+		Vector3 forward = Vector3.up;
+		Vector3 toTarget = (target.transform.position - transform.position).normalized;
+
+		float dot = Vector3.Dot(forward, toTarget);
+		float acos = Mathf.Acos(dot);
+		float zRot = Mathf.Rad2Deg * acos;
+
+		if (target.transform.position.x > transform.position.x) {
+			zRot *= -1f;
+		}
+
+		Debug.Log("dot " + dot + " acos " + acos + " zRot " + zRot);
+
+		transform.Rotate(new Vector3(0f, 0f, zRot));
+
 		SetMessageIcons ();
 
 		GameObject.DestroyImmediate(launchPoint);
