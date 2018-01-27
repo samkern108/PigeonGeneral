@@ -36,7 +36,6 @@ public class FlyingBird : MonoBehaviour {
 					}
 				}
 
-				GameObject.DestroyImmediate(target);
 				GameObject.DestroyImmediate(this.gameObject);
 			}
 		}

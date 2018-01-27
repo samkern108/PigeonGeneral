@@ -15,7 +15,7 @@ public class BirdSpawner : MonoBehaviour {
 
 	public enum SelectionStage
 	{
-		Action, Dir
+		Action, Dir, Unit
 	};
 
 	public SelectionStage stage = SelectionStage.Action;
@@ -40,6 +40,9 @@ public class BirdSpawner : MonoBehaviour {
 		case SelectionStage.Dir:
 			SelectDir ();
 			break;
+		case SelectionStage.Unit:
+			SelectUnit ();
+			break;
 		}
 	}
 
@@ -56,13 +59,6 @@ public class BirdSpawner : MonoBehaviour {
 		}
 	}
 
-	private void UpdateMessageAction(Message.Action action) {
-		message.action = action;
-		MessageUI.self.SetActionSelectionChoice (action);
-		stage = SelectionStage.Dir;
-		MessageUI.self.SetSelectionStage (stage);
-	}
-
 	private void SelectDir() {
 		if (Input.GetKeyDown (GetKey(Message.Dir.up))) {
 			UpdateMessageDir(Message.Dir.up);
@@ -75,18 +71,41 @@ public class BirdSpawner : MonoBehaviour {
 		}
 	}
 
-	private void UpdateMessageDir(Message.Dir dir) {
-		message.dir = dir;
-		MessageUI.self.SetDirSelectionChoice (dir);
-		SpawnBird();
+	private void SelectUnit() {
+
+		GameObject target = Board.self.GetRandomObjectForPlayer(playerIndex);
+
+		if (Input.GetKeyDown (KeyCode.W)) {
+			SendBirdToUnit (target);
+		} else if (Input.GetKeyDown (KeyCode.S)) {
+			SendBirdToUnit (target);
+		} else if (Input.GetKeyDown (KeyCode.A)) {
+			SendBirdToUnit (target);
+		} else if (Input.GetKeyDown (KeyCode.D)) {
+			SendBirdToUnit (target);
+		}
 	}
 
-	private void SpawnBird() {
+	private void UpdateMessageAction(Message.Action action) {
+		message.action = action;
+		stage = SelectionStage.Dir;
+
+		MessageUI.self.SetActionSelectionChoice (action);
+		MessageUI.self.SetSelectionStage (stage);
+	}
+
+	private void UpdateMessageDir(Message.Dir dir) {
+		message.dir = dir;
+		stage = SelectionStage.Unit;
+
+		MessageUI.self.SetDirSelectionChoice (dir);
+		MessageUI.self.SetSelectionStage (stage);
+	}
+		
+	private void SendBirdToUnit(GameObject unit) {
 		GameObject flyingBird = Instantiate (birdPrefab);
 
-		target = new GameObject();
-		target.name = "Target";
-		target.transform.position = Board.self ? Board.self.GetRandomObjectForPlayer(playerIndex).transform.position : new Vector3(Random.Range(-8, 8), Random.Range(-4, 4), 0f);
+		target = unit;
 
 		launchPoint = new GameObject();
 		launchPoint.name = "Launch";
