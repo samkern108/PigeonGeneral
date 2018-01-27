@@ -6,8 +6,6 @@ using UnityEngine.UI;
 public class BirdSpawner : MonoBehaviour {
 
 	private Message message;
-	private GameObject target;
-	private GameObject launchPoint;
 
 	public GameObject birdPrefab;
 
@@ -72,19 +70,16 @@ public class BirdSpawner : MonoBehaviour {
 			UpdateMessageDir(Message.Dir.right);
 		}
 	}
-
+		
 	private void SelectUnit() {
-
-		GameObject target = Board.self.GetRandomObjectForPlayer(playerIndex);
-
 		if (Input.GetKeyDown (GetKey(Message.Dir.up))) {
-			SendBirdToUnit (target);
-		} else if (Input.GetKeyDown (GetKey(Message.Dir.down))) {
-			SendBirdToUnit (target);
+			SendBirdToUnit (0);
 		} else if (Input.GetKeyDown (GetKey(Message.Dir.left))) {
-			SendBirdToUnit (target);
+			SendBirdToUnit (1);
+		} else if (Input.GetKeyDown (GetKey(Message.Dir.down))) {
+			SendBirdToUnit (2);
 		} else if (Input.GetKeyDown (GetKey(Message.Dir.right))) {
-			SendBirdToUnit (target);
+			SendBirdToUnit (3);
 		}
 	}
 
@@ -104,12 +99,13 @@ public class BirdSpawner : MonoBehaviour {
 		UI.SetSelectionStage (stage);
 	}
 		
-	private void SendBirdToUnit(GameObject unit) {
+	private void SendBirdToUnit(int unitIndex) {
 		GameObject flyingBird = Instantiate (birdPrefab);
 
-		target = unit;
+		int index = unitIndex * Player.PLAYER_COUNT + playerIndex;
+		GameObject target = GameController.self.unitControllers[index].gameObject;
 
-		launchPoint = new GameObject();
+		GameObject launchPoint = new GameObject();
 		launchPoint.name = "Launch";
 		launchPoint.transform.position = Board.self ? Board.GetBoardWorld(new Vector2(0.5f, 0f)) : new Vector3(0f, -5f, 0.5f);
 
