@@ -38,6 +38,15 @@ TagManager:
   - 
   - 
   m_SortingLayers:
+  - name: Ground
+    uniqueID: 2789669609
+    locked: 0
   - name: Default
     uniqueID: 0
+    locked: 0
+  - name: Units
+    uniqueID: 2021365261
+    locked: 0
+  - name: Pigeons
+    uniqueID: 381881107
     locked: 0

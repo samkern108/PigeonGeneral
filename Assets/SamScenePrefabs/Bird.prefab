@@ -72,6 +72,7 @@ GameObject:
   - component: {fileID: 4069809072621234}
   - component: {fileID: 212512929502336548}
   - component: {fileID: 114949144883915058}
+  - component: {fileID: 95696361327387294}
   m_Layer: 0
   m_Name: Bird
   m_TagString: Untagged
@@ -104,13 +105,30 @@ Transform:
   m_PrefabInternal: {fileID: 100100000}
   m_GameObject: {fileID: 1406092279783666}
   m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
-  m_LocalPosition: {x: 0.23455593, y: -5.47, z: 0.032263428}
+  m_LocalPosition: {x: 0, y: 0, z: 0}
   m_LocalScale: {x: 1, y: 1, z: 1}
   m_Children:
   - {fileID: 224378570314009264}
   m_Father: {fileID: 0}
   m_RootOrder: 0
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
+--- !u!95 &95696361327387294
+Animator:
+  serializedVersion: 3
+  m_ObjectHideFlags: 1
+  m_PrefabParentObject: {fileID: 0}
+  m_PrefabInternal: {fileID: 100100000}
+  m_GameObject: {fileID: 1406092279783666}
+  m_Enabled: 1
+  m_Avatar: {fileID: 0}
+  m_Controller: {fileID: 9100000, guid: dca9cce1881f4024c8e7d44ce3dd9b62, type: 2}
+  m_CullingMode: 0
+  m_UpdateMode: 0
+  m_ApplyRootMotion: 0
+  m_LinearVelocityBlending: 0
+  m_WarningMessage: 
+  m_HasTransformHierarchy: 1
+  m_AllowConstantClipSamplingOptimization: 1
 --- !u!114 &114037160144937884
 MonoBehaviour:
   m_ObjectHideFlags: 1
@@ -274,10 +292,10 @@ SpriteRenderer:
   m_AutoUVMaxDistance: 0.5
   m_AutoUVMaxAngle: 89
   m_LightmapParameters: {fileID: 0}
-  m_SortingLayerID: 0
-  m_SortingLayer: 0
+  m_SortingLayerID: 381881107
+  m_SortingLayer: 2
   m_SortingOrder: 0
-  m_Sprite: {fileID: 21300000, guid: 18c4f2d7031d5412da9a1771bde43ede, type: 3}
+  m_Sprite: {fileID: 21300000, guid: 3d59ce9a3847dd047b37f0e43af41021, type: 3}
   m_Color: {r: 1, g: 1, b: 1, a: 1}
   m_FlipX: 0
   m_FlipY: 0
@@ -333,7 +351,7 @@ RectTransform:
   m_GameObject: {fileID: 1489653134737522}
   m_LocalRotation: {x: -0, y: -0, z: -0, w: 1}
   m_LocalPosition: {x: 0, y: 0, z: -0.032263428}
-  m_LocalScale: {x: 1, y: 1, z: 1}
+  m_LocalScale: {x: 0.8, y: 0.8, z: 1}
   m_Children:
   - {fileID: 224460030241790126}
   m_Father: {fileID: 4069809072621234}
@@ -341,7 +359,7 @@ RectTransform:
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
   m_AnchorMin: {x: 0, y: 0}
   m_AnchorMax: {x: 0, y: 0}
-  m_AnchoredPosition: {x: -0.012260204, y: -0.82708603}
+  m_AnchoredPosition: {x: -0.012260204, y: -0.5}
   m_SizeDelta: {x: 1.1955, y: 0.6056}
   m_Pivot: {x: 0.5, y: 0.5}
 --- !u!224 &224460030241790126
