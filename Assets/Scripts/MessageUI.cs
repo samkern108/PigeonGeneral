@@ -7,24 +7,22 @@ public class MessageUI : MonoBehaviour {
 
 	public static MessageUI self;
 
+	public GameObject wasdDir, wasdAction;
+	public Image actionIcon, dirIcon;
+
 	void Start() {
 		self = this;
-		currentSelectionLabel.text = "";
-		currentSelectionChoice.text = "";
-		instruction.text = "";
 	}
-
-	public Text currentSelectionLabel, currentSelectionChoice, instruction;
 
 	public void SetSelectionStage(StagingBird.SelectionStage stage) {
 		switch (stage) {
 		case StagingBird.SelectionStage.Action:
-			currentSelectionLabel.text = "Action";
-			instruction.text = "E to confirm";
+			wasdDir.SetActive (false);
+			wasdAction.SetActive (true);
 			break;
 		case StagingBird.SelectionStage.Dir:
-			currentSelectionLabel.text = "Dir";
-			instruction.text = "E to FLY";
+			wasdDir.SetActive (true);
+			wasdAction.SetActive (false);
 			break;
 		}
 	}
@@ -32,10 +30,10 @@ public class MessageUI : MonoBehaviour {
 	public void SetActionSelectionChoice(Message.Action action) {
 		switch (action) {
 		case Message.Action.shoot:
-			currentSelectionLabel.text = "Shoot";
+			actionIcon.sprite = ResourceManager.self.attackIcon;
 			break;
 		case Message.Action.move:
-			currentSelectionLabel.text = "Move";
+			actionIcon.sprite = ResourceManager.self.moveIcon;
 			break;
 		}
 	}
@@ -43,16 +41,16 @@ public class MessageUI : MonoBehaviour {
 	public void SetDirSelectionChoice(Message.Dir dir) {
 		switch (dir) {
 		case Message.Dir.down:
-			currentSelectionChoice.text = "Down";
+			dirIcon.sprite = ResourceManager.self.downArrow;
 			break;
 		case Message.Dir.left:
-			currentSelectionChoice.text = "Left";
+			dirIcon.sprite = ResourceManager.self.leftArrow;
 			break;
 		case Message.Dir.right:
-			currentSelectionChoice.text = "Right";
+			dirIcon.sprite = ResourceManager.self.rightArrow;
 			break;
 		case Message.Dir.up:
-			currentSelectionChoice.text = "Up";
+			dirIcon.sprite = ResourceManager.self.upArrow;
 			break;
 		}
 	}
