@@ -1,14 +1,14 @@
 fileFormatVersion: 2
 guid: 66bcba0a869ff4506ae843b16b264c5c
-timeCreated: 1517084488
+timeCreated: 1517090974
 licenseType: Free
 TextureImporter:
   fileIDToRecycleName:
-    21300000: Pigeon_0
-    21300002: Pigeon_1
+    21300000: Pigeon0
+    21300002: Pigeon1
     21300004: Pigeon_7
-    21300006: Pigeon_10
-    21300008: Pigeon_11
+    21300006: Pigeon2
+    21300008: Pigeon3
   externalObjects: {}
   serializedVersion: 4
   mipmaps:
@@ -95,7 +95,7 @@ TextureImporter:
     serializedVersion: 2
     sprites:
     - serializedVersion: 2
-      name: Pigeon_0
+      name: Pigeon0
       rect:
         serializedVersion: 2
         x: 12
@@ -103,13 +103,13 @@ TextureImporter:
         width: 178
         height: 180
       alignment: 0
-      pivot: {x: 0, y: 0}
+      pivot: {x: 0.5, y: 0.5}
       border: {x: 0, y: 0, z: 0, w: 0}
       outline: []
       physicsShape: []
       tessellationDetail: 0
     - serializedVersion: 2
-      name: Pigeon_1
+      name: Pigeon1
       rect:
         serializedVersion: 2
         x: 200
@@ -117,27 +117,13 @@ TextureImporter:
         width: 186
         height: 168
       alignment: 0
-      pivot: {x: 0, y: 0}
+      pivot: {x: 0.5, y: 0.5}
       border: {x: 0, y: 0, z: 0, w: 0}
       outline: []
       physicsShape: []
       tessellationDetail: 0
     - serializedVersion: 2
-      name: Pigeon_7
-      rect:
-        serializedVersion: 2
-        x: 683
-        y: 292
-        width: 9
-        height: 44
-      alignment: 0
-      pivot: {x: 0, y: 0}
-      border: {x: 0, y: 0, z: 0, w: 0}
-      outline: []
-      physicsShape: []
-      tessellationDetail: 0
-    - serializedVersion: 2
-      name: Pigeon_10
+      name: Pigeon2
       rect:
         serializedVersion: 2
         x: 4
@@ -145,13 +131,13 @@ TextureImporter:
         width: 193
         height: 180
       alignment: 0
-      pivot: {x: 0, y: 0}
+      pivot: {x: 0.5, y: 0.5}
       border: {x: 0, y: 0, z: 0, w: 0}
       outline: []
       physicsShape: []
       tessellationDetail: 0
     - serializedVersion: 2
-      name: Pigeon_11
+      name: Pigeon3
       rect:
         serializedVersion: 2
         x: 204
@@ -159,7 +145,7 @@ TextureImporter:
         width: 185
         height: 184
       alignment: 0
-      pivot: {x: 0, y: 0}
+      pivot: {x: 0.5, y: 0.5}
       border: {x: 0, y: 0, z: 0, w: 0}
       outline: []
       physicsShape: []
