@@ -26,6 +26,14 @@ public class Board : MonoBehaviour {
 						   0f);
 	}
 
+	static public bool IsValidCellPosition(Vector2Int cellPosition)
+	{
+		return (cellPosition.x >= 0
+			&& cellPosition.x < DIMS.x
+			&& cellPosition.y >= 0
+			&& cellPosition.y < DIMS.y);
+	}
+
 	static public Vector2Int GetCellPosition(Vector3 worldPosition)
 	{
 		Vector3 cellPosition = worldPosition / CELL_WORLD_SIZE;
@@ -73,7 +81,15 @@ public class Board : MonoBehaviour {
 	{
 		List<GameObject> shuffledContents = contents.CreateShuffledCopy();
 
-		return shuffledContents.FirstOrDefault(o => o != null);
+		return shuffledContents.FirstOrDefault(go => go != null);
+	}
+
+	public GameObject GetRandomObjectForPlayer(int playerIndex) {
+		List<GameObject> shuffledContents = contents.CreateShuffledCopy();
+
+		return shuffledContents.FirstOrDefault(go => go != null			
+		&&	(go.GetComponent<UnitController>() != null)
+		&&	go.GetComponent<UnitController>().playerIndex == playerIndex);
 	}
 
 	public void AddObjectAt(GameObject entity, Vector2Int cellPosition)
@@ -90,6 +106,12 @@ public class Board : MonoBehaviour {
 		Debug.Assert(entity != null, "Invalid entity!");
 
 		contents.Remove(entity);
+	}
+
+	public void RemoveObjectAt(Vector2Int cellPosition) {
+		Debug.Assert(IsValidCellPosition(cellPosition), "Invalid cellPosition! " + cellPosition);
+
+		contents.RemoveAt(GetIndexForPosition(cellPosition));
 	}
 
 	public bool HasObjectAt(Vector2Int cellPosition)
@@ -114,14 +136,6 @@ public class Board : MonoBehaviour {
 	private int GetIndexForPosition(Vector2Int cellPosition)
 	{
 		return (cellPosition.y * DIMS.x + cellPosition.x);
-	}
-
-	static private bool IsValidCellPosition(Vector2Int cellPosition)
-	{
-		return (cellPosition.x >= 0
-			&& cellPosition.x < DIMS.x
-			&& cellPosition.y >= 0
-			&& cellPosition.y < DIMS.y);
 	}
 
 	private void Awake() {

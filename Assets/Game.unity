@@ -227,6 +227,7 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   unitPrefab: {fileID: 1581682322869568, guid: b1babeb183c8efc49a31f2af93101af0, type: 2}
+  stagingBirdPrefab: {fileID: 0}
 --- !u!4 &281128319
 Transform:
   m_ObjectHideFlags: 0
