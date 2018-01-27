@@ -28,9 +28,11 @@ public class FlyingBird : MonoBehaviour {
 			if (Vector3.Distance(transform.position, target.transform.position) < 0.1f) {
 				if (Board.self) {
 					GameObject go = Board.self.GetObjectAt(transform.position);
-					UnitController unit = go.GetComponent<UnitController>();
-					if (unit != null) {
-						unit.SubmitMessage(message);
+					if (go != null) {
+						UnitController unit = go.GetComponent<UnitController>();
+						if (unit != null) {
+							unit.SubmitMessage(message);
+						}
 					}
 				}
 
