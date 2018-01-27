@@ -171,4 +171,34 @@ public class Board : MonoBehaviour {
 			sr.sortingLayerID = SortingLayer.NameToID("Ground");
 		}
 	}
+
+	static public Vector3 GetRandomPointOnBorder()
+	{
+		float extents_x = (DIMS.x + 1) * HALF_CELL_WORLD_SIZE;
+		float extents_y = (DIMS.y + 1) * HALF_CELL_WORLD_SIZE;
+		Vector2 center = GetBoardCenterWorld ();
+		Vector2 min = new Vector2(center.x - extents_x, center.y - extents_y);
+		Vector2 max = new Vector2(center.x + extents_x, center.y + extents_y);
+
+		float x = Random.Range(min.x, max.x);
+		float y = Random.Range(min.y, max.y);
+
+		Debug.Log ("EXTENTS: " + min.x + "  " + max.x);
+
+		if (x <= center.x) {
+			x = min.x;
+		}
+		else {
+			x = max.x;
+		}
+
+		if (y <= center.y) {
+			y = min.y;
+		}
+		else {
+			y = max.y;
+		}
+
+		return new Vector3(x, y, 0);
+	}
 }
