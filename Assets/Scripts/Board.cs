@@ -10,7 +10,7 @@ public class Board : MonoBehaviour {
 
 	static public readonly float CELL_WORLD_SIZE = 1f;
 	static public readonly float HALF_CELL_WORLD_SIZE = 0.5f * CELL_WORLD_SIZE;
-	static public readonly Vector2Int DIMS = new Vector2Int(10, 10);
+	static public readonly Vector2Int DIMS = new Vector2Int(8, 8);
 
 	static public Board self { get { return _self; } }
 	static private Board _self;
