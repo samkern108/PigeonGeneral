@@ -183,8 +183,6 @@ public class Board : MonoBehaviour {
 		float x = Random.Range(min.x, max.x);
 		float y = Random.Range(min.y, max.y);
 
-		Debug.Log ("EXTENTS: " + min.x + "  " + max.x);
-
 		if (x <= center.x) {
 			x = min.x;
 		}
