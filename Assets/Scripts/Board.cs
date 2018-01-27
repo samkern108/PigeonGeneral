@@ -163,10 +163,12 @@ public class Board : MonoBehaviour {
 			contents.Add(null);
 
 			GameObject go = new GameObject();
+			go.transform.SetParent(this.transform, false);
 			go.transform.position = GetCellCenterWorld(GetPositionForIndex(i));
 
 			SpriteRenderer sr = go.AddComponent<SpriteRenderer>();
 			sr.sprite = backgroundSprites[Random.Range(0, GROUND_COUNT)];
+			sr.sortingLayerID = SortingLayer.NameToID("Ground");
 		}
 	}
 }
