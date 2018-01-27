@@ -43,11 +43,15 @@ public class BirdSpawner : MonoBehaviour {
 		}
 	}
 
+	private KeyCode GetKey(Message.Dir dir) {
+		return Player.Get(playerIndex).GetKey(dir);
+	}
+
 	private void SelectAction() {
-		if (Input.GetKeyDown (KeyCode.S)) {
+		if (Input.GetKeyDown (GetKey(Message.Dir.down))) {
 			UpdateMessageAction(Message.Action.move);
 		}
-		else if (Input.GetKeyDown (KeyCode.W)) {
+		else if (Input.GetKeyDown (GetKey(Message.Dir.up))) {
 			UpdateMessageAction(Message.Action.shoot);
 		}
 	}
@@ -60,13 +64,13 @@ public class BirdSpawner : MonoBehaviour {
 	}
 
 	private void SelectDir() {
-		if (Input.GetKeyDown (KeyCode.W)) {
+		if (Input.GetKeyDown (GetKey(Message.Dir.up))) {
 			UpdateMessageDir(Message.Dir.up);
-		} else if (Input.GetKeyDown (KeyCode.S)) {
+		} else if (Input.GetKeyDown (GetKey(Message.Dir.down))) {
 			UpdateMessageDir(Message.Dir.down);
-		} else if (Input.GetKeyDown (KeyCode.A)) {
+		} else if (Input.GetKeyDown (GetKey(Message.Dir.left))) {
 			UpdateMessageDir(Message.Dir.left);
-		} else if (Input.GetKeyDown (KeyCode.D)) {
+		} else if (Input.GetKeyDown (GetKey(Message.Dir.right))) {
 			UpdateMessageDir(Message.Dir.right);
 		}
 	}

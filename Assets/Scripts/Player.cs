@@ -2,19 +2,25 @@
 using System.Collections.Generic;
 using UnityEngine;
 
+[System.Serializable]
 public class PlayerData {
 	public int index;
 	public Vector3 launchPosition;
+	public KeyCode[] inputs;
+
+	public KeyCode GetKey(Message.Dir dir) {
+		return inputs[(int)dir];
+	}
 }
 
 public class Player : MonoBehaviour {
 
-	static public readonly int PLAYER_COUNT = 2;
+	static public readonly int PLAYER_COUNT = 4;
 
 	static public Player self { get { return _self; } }
 	static private Player _self;
 
-	private PlayerData[] playerData;
+	public PlayerData[] playerData = new PlayerData[PLAYER_COUNT];
 
 	static public PlayerData Get(int index)
 	{
@@ -31,16 +37,5 @@ public class Player : MonoBehaviour {
 		}
 
 		_self = this;
-
-		playerData = new PlayerData[PLAYER_COUNT];
-		for (int i = 0; i < PLAYER_COUNT; ++i)
-		{
-			PlayerData pd = new PlayerData();
-			{
-				pd.index = i;
-				pd.launchPosition = Board.GetBoardWorld(new Vector2(0.5f, 0f));
-			}
-			playerData[i] = pd;
-		}
 	}
 }
