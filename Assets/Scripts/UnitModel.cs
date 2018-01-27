@@ -11,8 +11,9 @@ public class UnitModel : MonoBehaviour {
 		new Color(1f, 1f, 1f, 1f),
 	};
 
-	public void Init(int playerIndex) {
+	public void Init(int playerIndex, int pigeonIndex) {
 		SpriteRenderer sr = gameObject.GetComponent<SpriteRenderer>();
+		sr.sprite = ResourceManager.self.GetPigeonSprite(pigeonIndex);
 
 		sr.color = playerColors[playerIndex];
 	}
