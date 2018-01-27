@@ -29,8 +29,9 @@ public class FlyingBird : MonoBehaviour {
 				if (Board.self) {
 					GameObject go = Board.self.GetObjectAt(transform.position);
 					UnitController unit = go.GetComponent<UnitController>();
-
-					unit.SubmitMessage(message);
+					if (unit != null) {
+						unit.SubmitMessage(message);
+					}
 				}
 
 				GameObject.DestroyImmediate(target);

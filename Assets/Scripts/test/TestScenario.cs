@@ -18,7 +18,7 @@ public class TestScenario : MonoBehaviour {
 		
 		Camera.main.transform.position = Board.GetBoardCenterWorld() - 10f * Vector3.forward;
 
-		for (int i = 0; i < 10; ++i)
+		for (int i = 0; i < 100; ++i)
 		{
 			Vector2Int cellPosition = new Vector2Int(Random.Range(0, Board.DIMS.x), Random.Range(0, Board.DIMS.y));
 
@@ -27,6 +27,9 @@ public class TestScenario : MonoBehaviour {
 				Vector3 worldPosition = Board.GetCellCenterWorld(cellPosition);
 				
 				GameObject obj = GameObject.Instantiate(unitPrefab, worldPosition, Quaternion.identity);
+				UnitController unit = obj.GetComponent<UnitController>();
+
+				unit.Init(i % Player.PLAYER_COUNT);
 
 				Board.self.AddObjectAt(obj, cellPosition);
 			}

@@ -11,6 +11,8 @@ public class BirdSpawner : MonoBehaviour {
 
 	public GameObject birdPrefab;
 
+	public int playerIndex;
+
 	public enum SelectionStage
 	{
 		Action, Dir
@@ -80,7 +82,7 @@ public class BirdSpawner : MonoBehaviour {
 
 		target = new GameObject();
 		target.name = "Target";
-		target.transform.position = Board.self ? Board.self.GetRandomObject().transform.position : new Vector3(Random.Range(-8, 8), Random.Range(-4, 4), 0f);
+		target.transform.position = Board.self ? Board.self.GetRandomObjectForPlayer(playerIndex).transform.position : new Vector3(Random.Range(-8, 8), Random.Range(-4, 4), 0f);
 
 		launchPoint = new GameObject();
 		launchPoint.name = "Launch";
