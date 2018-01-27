@@ -26,8 +26,8 @@ public class MessageUI : MonoBehaviour {
 		BirdSpawner spawner = this.gameObject.GetComponent<BirdSpawner>();
 		messageUIs[spawner.playerIndex] = this;
 
-		//Image img = this.gameObject.GetComponent<Image>();
-		//img.color = Colors.playerColors[playerIndex]
+		Image img = this.gameObject.GetComponent<Image>();
+		img.color = Colors.playerColors[spawner.playerIndex];
 	}
 
 	public void Reset() {

@@ -36,7 +36,7 @@ public class TestScenario : MonoBehaviour {
 		}
 
 		// units
-		for (int i = 0; i < 12; ++i) {
+		for (int i = 0; i < 16; ++i) {
 			while (true) {
 				Vector2Int cellPosition = new Vector2Int(Random.Range(0, Board.DIMS.x), Random.Range(0, Board.DIMS.y));
 
