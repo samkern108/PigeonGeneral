@@ -5,6 +5,7 @@ using UnityEngine;
 public class GameController : MonoBehaviour {
 
 	public GameObject unitPrefab;
+	public GameObject obstaclePrefab;
 
 	public UnitController[] unitControllers;
 
@@ -21,6 +22,23 @@ public class GameController : MonoBehaviour {
 
 		Camera.main.transform.position = Board.GetBoardCenterWorld() - 10f * Vector3.forward;
 
+		// obstacles
+		for (int i = 0; i < 10; ++i) {
+			while (true) {
+				Vector2Int cellPosition = new Vector2Int(Random.Range(0, Board.DIMS.x), Random.Range(0, Board.DIMS.y));
+
+				if (!Board.self.HasObjectAt(cellPosition)) {
+					Vector3 worldPosition = Board.GetCellCenterWorld(cellPosition);
+					
+					GameObject obj = GameObject.Instantiate(obstaclePrefab, worldPosition, Quaternion.identity);
+
+					Board.self.AddObjectAt(obj, cellPosition);	
+
+					break;				
+				}
+			}
+		}
+		
 		for (int i = 0; i < Player.PLAYER_COUNT * Player.UNITS_PER_PLAYER; ++i) {
 			while (true) {
 				Vector2Int cellPosition = new Vector2Int(Random.Range(0, Board.DIMS.x), Random.Range(0, Board.DIMS.y));

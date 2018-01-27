@@ -20,6 +20,7 @@ GameObject:
   m_Component:
   - component: {fileID: 4202709492654430}
   - component: {fileID: 114303698887553338}
+  - component: {fileID: 114325684931872578}
   m_Layer: 0
   m_Name: TestScenario
   m_TagString: Untagged
@@ -46,7 +47,7 @@ MonoBehaviour:
   m_PrefabParentObject: {fileID: 0}
   m_PrefabInternal: {fileID: 100100000}
   m_GameObject: {fileID: 1230590358684748}
-  m_Enabled: 1
+  m_Enabled: 0
   m_EditorHideFlags: 0
   m_Script: {fileID: 11500000, guid: f6aa07779ca1a0842af6d6ffa17eb1bd, type: 3}
   m_Name: 
@@ -54,3 +55,18 @@ MonoBehaviour:
   unitPrefab: {fileID: 1581682322869568, guid: b1babeb183c8efc49a31f2af93101af0, type: 2}
   obstaclePrefab: {fileID: 1567645309931198, guid: 7b33c60e2bc839d4d838b0d55fe0252c,
     type: 2}
+--- !u!114 &114325684931872578
+MonoBehaviour:
+  m_ObjectHideFlags: 1
+  m_PrefabParentObject: {fileID: 0}
+  m_PrefabInternal: {fileID: 100100000}
+  m_GameObject: {fileID: 1230590358684748}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: a1e1eb4f29d9c4bab8cfb0e5f2ec1bcb, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  unitPrefab: {fileID: 1581682322869568, guid: b1babeb183c8efc49a31f2af93101af0, type: 2}
+  obstaclePrefab: {fileID: 1567645309931198, guid: 7b33c60e2bc839d4d838b0d55fe0252c,
+    type: 2}
+  unitControllers: []
