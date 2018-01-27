@@ -4,13 +4,18 @@ using UnityEngine;
 
 public class FlyingBird : MonoBehaviour {
 
-	// Use this for initialization
-	void Start () {
-		
+	private GameObject target;
+	private float speed = .4f;
+	public Message message;
+
+	public void Initialize(GameObject target, GameObject launchPoint, Message message) {
+		this.message = message;
+		transform.position = launchPoint.transform.position;
+		this.target = target;
 	}
-	
-	// Update is called once per frame
+
 	void Update () {
-		
+		if(target != null)
+			transform.position = Vector2.MoveTowards (transform.position, target.transform.position, speed * Time.deltaTime);
 	}
 }
