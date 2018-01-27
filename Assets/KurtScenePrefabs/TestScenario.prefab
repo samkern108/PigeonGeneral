@@ -52,4 +52,5 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   unitPrefab: {fileID: 1581682322869568, guid: b1babeb183c8efc49a31f2af93101af0, type: 2}
-  stagingBirdPrefab: {fileID: 0}
+  obstaclePrefab: {fileID: 1567645309931198, guid: 7b33c60e2bc839d4d838b0d55fe0252c,
+    type: 2}

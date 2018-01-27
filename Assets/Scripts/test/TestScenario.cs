@@ -5,6 +5,7 @@ using UnityEngine;
 public class TestScenario : MonoBehaviour {
 
 	public GameObject unitPrefab;
+	public GameObject obstaclePrefab;
 
 	static public TestScenario self { get { return _self; } } 
 	static private TestScenario _self;
@@ -17,6 +18,24 @@ public class TestScenario : MonoBehaviour {
 		
 		Camera.main.transform.position = Board.GetBoardCenterWorld() - 10f * Vector3.forward;
 
+		// obstacles
+		for (int i = 0; i < 10; ++i) {
+			while (true) {
+				Vector2Int cellPosition = new Vector2Int(Random.Range(0, Board.DIMS.x), Random.Range(0, Board.DIMS.y));
+
+				if (!Board.self.HasObjectAt(cellPosition)) {
+					Vector3 worldPosition = Board.GetCellCenterWorld(cellPosition);
+					
+					GameObject obj = GameObject.Instantiate(obstaclePrefab, worldPosition, Quaternion.identity);
+
+					Board.self.AddObjectAt(obj, cellPosition);	
+
+					break;				
+				}
+			}
+		}
+
+		// units
 		for (int i = 0; i < 12; ++i) {
 			while (true) {
 				Vector2Int cellPosition = new Vector2Int(Random.Range(0, Board.DIMS.x), Random.Range(0, Board.DIMS.y));
