@@ -10,7 +10,7 @@ public class MessageUI : MonoBehaviour {
 	public GameObject wasdDir, wasdAction;
 	public Image actionIcon, dirIcon;
 
-	void Start() {
+	void Awake() {
 		self = this;
 	}
 
