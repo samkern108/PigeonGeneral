@@ -15,6 +15,9 @@ public class Board : MonoBehaviour {
 	static public Board self { get { return _self; } }
 	static private Board _self;
 
+	public Sprite[] backgroundSprites;
+	private const int GROUND_COUNT = 24;
+
 	private List<GameObject> contents;
 
 	static public Vector3 GetCellCenterWorld(Vector2Int cellPosition)
@@ -141,6 +144,10 @@ public class Board : MonoBehaviour {
 		return (cellPosition.y * DIMS.x + cellPosition.x);
 	}
 
+	private Vector2Int GetPositionForIndex(int index) {
+		return new Vector2Int(index % DIMS.x, index / DIMS.x);
+	}
+
 	private void Awake() {
 		if (self != null)
 		{
@@ -152,6 +159,14 @@ public class Board : MonoBehaviour {
 		_self = this;
 
 		contents = new List<GameObject>(DIMS.x * DIMS.y);
-		for (int i = 0; i < contents.Capacity; ++i) { contents.Add(null); }
+		for (int i = 0; i < contents.Capacity; ++i) {
+			contents.Add(null);
+
+			GameObject go = new GameObject();
+			go.transform.position = GetCellCenterWorld(GetPositionForIndex(i));
+
+			SpriteRenderer sr = go.AddComponent<SpriteRenderer>();
+			sr.sprite = backgroundSprites[Random.Range(0, GROUND_COUNT)];
+		}
 	}
 }
