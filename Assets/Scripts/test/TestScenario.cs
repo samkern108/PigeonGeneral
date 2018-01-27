@@ -47,7 +47,7 @@ public class TestScenario : MonoBehaviour {
 					GameObject obj = GameObject.Instantiate(unitPrefab, worldPosition, Quaternion.identity);
 					UnitController unit = obj.GetComponent<UnitController>();
 
-					unit.Init(i % Player.PLAYER_COUNT);
+					unit.Init(i % Player.PLAYER_COUNT, (int)Mathf.Floor(i / Player.PLAYER_COUNT));
 
 					Board.self.AddObjectAt(obj, cellPosition);
 

@@ -4,16 +4,17 @@ using UnityEngine;
 
 public class UnitController : MonoBehaviour {
 
-	public int playerIndex;
+	public int playerIndex, pigeonIndex;
 	public UnitModel model;
 
 	private Message activeMessage;
 	private Queue<Message> messageQueue;
 
-	public void Init(int playerIndex) {
+	public void Init(int playerIndex, int pigeonIndex) {
 		this.playerIndex = playerIndex;
+		this.pigeonIndex = pigeonIndex;
 
-		model.Init(playerIndex);
+		model.Init(playerIndex, pigeonIndex);
 	}
 
 	public void SubmitMessage(Message msg) {

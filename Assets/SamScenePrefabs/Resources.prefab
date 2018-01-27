@@ -58,3 +58,8 @@ MonoBehaviour:
   attackIcon: {fileID: 21300000, guid: 3b3fbc83f3a374e2a963fb47733cce06, type: 3}
   moveIcon: {fileID: 21300002, guid: 3b3fbc83f3a374e2a963fb47733cce06, type: 3}
   questionIcon: {fileID: 21300000, guid: 4564801a5f58d45c590449211ef1237a, type: 3}
+  pigeons:
+  - {fileID: 21300000, guid: 66bcba0a869ff4506ae843b16b264c5c, type: 3}
+  - {fileID: 21300002, guid: 66bcba0a869ff4506ae843b16b264c5c, type: 3}
+  - {fileID: 21300006, guid: 66bcba0a869ff4506ae843b16b264c5c, type: 3}
+  - {fileID: 21300008, guid: 66bcba0a869ff4506ae843b16b264c5c, type: 3}
