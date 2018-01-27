@@ -6,6 +6,7 @@ using UnityEngine.UI;
 public class BirdSpawner : MonoBehaviour {
 
 	private Message message;
+	private int targetIndex = -1;
 
 	public GameObject birdPrefab;
 
@@ -26,6 +27,7 @@ public class BirdSpawner : MonoBehaviour {
 
 	private void ResetSelf() {
 		message = new Message ();
+		targetIndex = Random.Range (0, Player.UNITS_PER_PLAYER);
 		UI.Reset ();
 
 		int initialStage = 0;
@@ -73,13 +75,13 @@ public class BirdSpawner : MonoBehaviour {
 		
 	private void SelectUnit() {
 		if (Input.GetKeyDown (GetKey(Message.Dir.up))) {
-			SendBirdToUnit (0);
+			targetIndex = 0;
 		} else if (Input.GetKeyDown (GetKey(Message.Dir.left))) {
-			SendBirdToUnit (1);
+			targetIndex = 1;
 		} else if (Input.GetKeyDown (GetKey(Message.Dir.down))) {
-			SendBirdToUnit (2);
+			targetIndex = 2;
 		} else if (Input.GetKeyDown (GetKey(Message.Dir.right))) {
-			SendBirdToUnit (3);
+			targetIndex = 3;
 		}
 	}
 
@@ -98,12 +100,13 @@ public class BirdSpawner : MonoBehaviour {
 		UI.SetDirSelectionChoice (dir);
 		UI.SetSelectionStage (stage);
 	}
-		
-	private void SendBirdToUnit(int unitIndex) {
+
+	public void SpawnBird() {
 		GameObject flyingBird = Instantiate (birdPrefab);
 
-		int index = unitIndex * Player.PLAYER_COUNT + playerIndex;
-		GameObject target = GameController.self.unitControllers[index].gameObject;
+		int index = targetIndex * Player.PLAYER_COUNT + playerIndex;
+
+		GameObject target = GameController.self.unitControllers[targetIndex].gameObject;
 
 		GameObject launchPoint = new GameObject();
 		launchPoint.name = "Launch";

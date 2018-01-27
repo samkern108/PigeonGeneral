@@ -16,6 +16,7 @@ public class PlayerData {
 public class Player : MonoBehaviour {
 
 	static public readonly int PLAYER_COUNT = 4;
+	static public readonly int UNITS_PER_PLAYER = 4;
 
 	static public Player self { get { return _self; } }
 	static private Player _self;
