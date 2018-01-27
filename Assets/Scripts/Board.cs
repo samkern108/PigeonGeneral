@@ -105,13 +105,16 @@ public class Board : MonoBehaviour {
 	{
 		Debug.Assert(entity != null, "Invalid entity!");
 
-		contents.Remove(entity);
+		int entityIndex = contents.IndexOf(entity);
+		if (entityIndex > -1) {
+			contents[entityIndex] = null;
+		}
 	}
 
 	public void RemoveObjectAt(Vector2Int cellPosition) {
 		Debug.Assert(IsValidCellPosition(cellPosition), "Invalid cellPosition! " + cellPosition);
 
-		contents.RemoveAt(GetIndexForPosition(cellPosition));
+		contents[GetIndexForPosition(cellPosition)] = null;
 	}
 
 	public bool HasObjectAt(Vector2Int cellPosition)
