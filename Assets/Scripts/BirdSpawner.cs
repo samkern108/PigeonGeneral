@@ -75,13 +75,13 @@ public class BirdSpawner : MonoBehaviour {
 
 		GameObject target = Board.self.GetRandomObjectForPlayer(playerIndex);
 
-		if (Input.GetKeyDown (KeyCode.W)) {
+		if (Input.GetKeyDown (GetKey(Message.Dir.up))) {
 			SendBirdToUnit (target);
-		} else if (Input.GetKeyDown (KeyCode.S)) {
+		} else if (Input.GetKeyDown (GetKey(Message.Dir.down))) {
 			SendBirdToUnit (target);
-		} else if (Input.GetKeyDown (KeyCode.A)) {
+		} else if (Input.GetKeyDown (GetKey(Message.Dir.left))) {
 			SendBirdToUnit (target);
-		} else if (Input.GetKeyDown (KeyCode.D)) {
+		} else if (Input.GetKeyDown (GetKey(Message.Dir.right))) {
 			SendBirdToUnit (target);
 		}
 	}
