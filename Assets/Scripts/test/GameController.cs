@@ -14,17 +14,16 @@ public class GameController : MonoBehaviour {
 	private void Awake() {
 		_self = this;
 	}
-
-	static private int NUM_PLAYERS = 2;
+		
 	static private int UNITS_PER_PLAYER = 4;
 
 	private void Start() {
 
-		unitControllers = new UnitController[NUM_PLAYERS * UNITS_PER_PLAYER];
+		unitControllers = new UnitController[Player.PLAYER_COUNT * UNITS_PER_PLAYER];
 
 		Camera.main.transform.position = Board.GetBoardCenterWorld() - 10f * Vector3.forward;
 
-		for (int i = 0; i < NUM_PLAYERS * UNITS_PER_PLAYER; ++i) {
+		for (int i = 0; i < Player.PLAYER_COUNT * UNITS_PER_PLAYER; ++i) {
 			while (true) {
 				Vector2Int cellPosition = new Vector2Int(Random.Range(0, Board.DIMS.x), Random.Range(0, Board.DIMS.y));
 
