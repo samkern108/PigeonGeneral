@@ -8,17 +8,25 @@ public class ResourceManager : MonoBehaviour {
 
 	public void Awake() {
 		self = this;
+		
+		pigeons = new Sprite[4][] {
+			pigeons0, pigeons1, pigeons2, pigeons3
+		};
 	}
 
 	public Sprite upArrow, downArrow, leftArrow, rightArrow;
 	public Sprite attackIcon, moveIcon;
 	public Sprite questionIcon;
-	public Sprite[] pigeons = new Sprite[4];
+	public Sprite[] pigeons0 = new Sprite[4];
+	public Sprite[] pigeons1 = new Sprite[4];
+	public Sprite[] pigeons2 = new Sprite[4];
+	public Sprite[] pigeons3 = new Sprite[4];
+	public Sprite[][] pigeons;
 
-	public Sprite GetPigeonSprite(int pigeonNum) {
+	public Sprite GetPigeonSprite(int playerIndex, int pigeonNum) {
 		if (pigeonNum > (pigeons.Length - 1))
 			Debug.LogError ("We only have so many pigeons >:(");
 		
-		return pigeons[pigeonNum];
+		return pigeons[playerIndex][pigeonNum];
 	}
 }
