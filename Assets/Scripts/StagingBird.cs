@@ -40,20 +40,19 @@ public class StagingBird : MonoBehaviour {
 	}
 
 	private void SelectAction() {
-		if (Input.GetKeyDown (KeyCode.W)) {
+		if (Input.GetKeyDown (KeyCode.S)) {
 			UpdateMessageAction(Message.Action.move);
 		}
-		else if (Input.GetKeyDown (KeyCode.S)) {
+		else if (Input.GetKeyDown (KeyCode.W)) {
 			UpdateMessageAction(Message.Action.shoot);
-		}
-		else if (Input.GetKeyDown(KeyCode.E)) {
-			stage = SelectionStage.Dir;
 		}
 	}
 
 	private void UpdateMessageAction(Message.Action action) {
 		message.action = action;
 		MessageUI.self.SetActionSelectionChoice (action);
+		stage = SelectionStage.Dir;
+		MessageUI.self.SetSelectionStage (stage);
 	}
 
 	private void SelectDir() {
@@ -66,18 +65,15 @@ public class StagingBird : MonoBehaviour {
 		} else if (Input.GetKeyDown (KeyCode.D)) {
 			UpdateMessageDir(Message.Dir.right);
 		}
-		if (Input.GetKeyDown(KeyCode.E)) {
-			Go ();
-		}
 	}
 
 	private void UpdateMessageDir(Message.Dir dir) {
 		message.dir = dir;
 		MessageUI.self.SetDirSelectionChoice (dir);
+		Go ();
 	}
 
 	private void Go() {
-
 		switch (message.action) {
 		case Message.Action.shoot:
 			actionIcon.sprite = ResourceManager.self.attackIcon;
