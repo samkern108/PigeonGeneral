@@ -20,13 +20,15 @@ public class BirdSpawner : MonoBehaviour {
 
 	public SelectionStage stage = SelectionStage.Action;
 
+	public MessageUI UI { get { return MessageUI.GetUIForPlayer(playerIndex); } }	
+
 	void Start() {
 		ResetSelf ();
 	}
 
 	private void ResetSelf() {
 		message = new Message ();
-		MessageUI.self.Reset ();
+		UI.Reset ();
 
 		int initialStage = 0;
 		stage = (SelectionStage)initialStage;
@@ -90,16 +92,16 @@ public class BirdSpawner : MonoBehaviour {
 		message.action = action;
 		stage = SelectionStage.Dir;
 
-		MessageUI.self.SetActionSelectionChoice (action);
-		MessageUI.self.SetSelectionStage (stage);
+		UI.SetActionSelectionChoice (action);
+		UI.SetSelectionStage (stage);
 	}
 
 	private void UpdateMessageDir(Message.Dir dir) {
 		message.dir = dir;
 		stage = SelectionStage.Unit;
 
-		MessageUI.self.SetDirSelectionChoice (dir);
-		MessageUI.self.SetSelectionStage (stage);
+		UI.SetDirSelectionChoice (dir);
+		UI.SetSelectionStage (stage);
 	}
 		
 	private void SendBirdToUnit(GameObject unit) {

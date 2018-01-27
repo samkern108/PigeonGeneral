@@ -10,8 +10,24 @@ public class MessageUI : MonoBehaviour {
 	public GameObject wasdDir, wasdAction, wasdUnit;
 	public Image actionIcon, dirIcon;
 
+	public static MessageUI GetUIForPlayer(int playerIndex) {
+		return messageUIs[playerIndex];
+	}
+
+	private static MessageUI[] messageUIs;
+
 	void Awake() {
 		self = this;
+
+		if (messageUIs == null) {
+			messageUIs = new MessageUI[Player.PLAYER_COUNT];
+		}
+
+		BirdSpawner spawner = this.gameObject.GetComponent<BirdSpawner>();
+		messageUIs[spawner.playerIndex] = this;
+
+		//Image img = this.gameObject.GetComponent<Image>();
+		//img.color = Colors.playerColors[playerIndex]
 	}
 
 	public void Reset() {
