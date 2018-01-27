@@ -10,7 +10,7 @@ public class TestScenario : MonoBehaviour {
 		
 		Camera.main.transform.position = Board.GetBoardCenterWorld() - 10f * Vector3.forward;
 
-		for (int i = 0; i < 100; ++i)
+		for (int i = 0; i < 1; ++i)
 		{
 			Vector2Int cellPosition = new Vector2Int(Random.Range(0, Board.DIMS.x), Random.Range(0, Board.DIMS.y));
 

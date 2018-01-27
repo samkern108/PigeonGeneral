@@ -33,6 +33,30 @@ public class Board : MonoBehaviour {
 		return new Vector2Int((int)cellPosition.x, (int)cellPosition.y);
 	}
 
+	static public Vector2Int GetAdjacentCellPosition(Vector2Int cellPosition, Message.Dir dir) {
+		Vector2Int delta = Vector2Int.zero;
+
+		switch (dir) {
+			case Message.Dir.left: {
+				delta = new Vector2Int(-1, 0);
+			} break;
+
+			case Message.Dir.right: {
+				delta = new Vector2Int(1, 0);
+			} break;
+
+			case Message.Dir.up: {
+				delta = new Vector2Int(0, 1);
+			} break;
+
+			case Message.Dir.down: {
+				delta = new Vector2Int(0, -1);
+			} break;
+		}
+
+		return (cellPosition + delta);
+	}
+
 	static public Vector3 GetBoardCenterWorld()
 	{
 		return GetBoardWorld(0.5f * Vector2.one);

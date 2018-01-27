@@ -6,7 +6,7 @@ using UnityEngine.UI;
 public class FlyingBird : MonoBehaviour {
 
 	private GameObject target;
-	public float speed = 1f;
+	public float speed = 3f;
 	public Message message;
 
 	public void Initialize(GameObject target, GameObject launchPoint, Message message) {
