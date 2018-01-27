@@ -77,7 +77,17 @@ public class StagingBird : MonoBehaviour {
 
 	private void Go() {
 		gameObject.AddComponent <FlyingBird>();
+
+		target = new GameObject();
+		target.name = "Target";
+		target.transform.position = Board.self ? Board.self.GetRandomObject().transform.position : new Vector3(Random.Range(-8, 8), Random.Range(-4, 4), 0f);
+
+		launchPoint = new GameObject();
+		launchPoint.name = "Launch";
+		launchPoint.transform.position = Board.self ? Board.GetBoardWorld(new Vector2(0.5f, 0f)) : new Vector3(0f, -5f, 0.5f);
+
 		gameObject.GetComponent <FlyingBird>().Initialize(target, launchPoint, message);
+
 		Destroy (this);
 	}
 }

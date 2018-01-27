@@ -1,6 +1,10 @@
 ﻿using System.Collections;
 using System.Collections.Generic;
+using System.Linq;
+
 using UnityEngine;
+
+using N_extensions;
 
 public class Board : MonoBehaviour {
 
@@ -11,7 +15,7 @@ public class Board : MonoBehaviour {
 	static public Board self { get { return _self; } }
 	static private Board _self;
 
-	private List<Object> contents;
+	private List<GameObject> contents;
 
 	static public Vector3 GetCellCenterWorld(Vector2Int cellPosition)
 	{
@@ -22,14 +26,33 @@ public class Board : MonoBehaviour {
 						   0f);
 	}
 
+	static public Vector2Int GetCellPosition(Vector3 worldPosition)
+	{
+		Vector3 cellPosition = worldPosition / CELL_WORLD_SIZE;
+
+		return new Vector2Int((int)cellPosition.x, (int)cellPosition.y);
+	}
+
 	static public Vector3 GetBoardCenterWorld()
 	{
-		return new Vector3(0.5f * DIMS.x * CELL_WORLD_SIZE,
-						   0.5f * DIMS.y * CELL_WORLD_SIZE,
+		return GetBoardWorld(0.5f * Vector2.one);
+	}
+
+	static public Vector3 GetBoardWorld(Vector2 relativePosition)
+	{
+		return new Vector3(relativePosition.x * DIMS.x * CELL_WORLD_SIZE,
+						   relativePosition.y * DIMS.y * CELL_WORLD_SIZE,
 						   0f);
 	}
 
-	public void AddObjectAt(Object entity, Vector2Int cellPosition)
+	public GameObject GetRandomObject()
+	{
+		List<GameObject> shuffledContents = contents.CreateShuffledCopy();
+
+		return shuffledContents.FirstOrDefault(o => o != null);
+	}
+
+	public void AddObjectAt(GameObject entity, Vector2Int cellPosition)
 	{
 		Debug.Assert(entity != null, "Invalid entity!");
 		Debug.Assert(IsValidCellPosition(cellPosition), "Invalid cellPosition! " + cellPosition);
@@ -38,7 +61,7 @@ public class Board : MonoBehaviour {
 		contents[GetIndexForPosition(cellPosition)] = entity;
 	}
 
-	public void RemoveObject(Object entity)
+	public void RemoveObject(GameObject entity)
 	{
 		Debug.Assert(entity != null, "Invalid entity!");
 
@@ -52,7 +75,12 @@ public class Board : MonoBehaviour {
 		return (contents[GetIndexForPosition(cellPosition)] != null);
 	}
 
-	public Object GetObjectAt(Vector2Int cellPosition)
+	public GameObject GetObjectAt(Vector3 worldPosition)
+	{
+		return GetObjectAt(GetCellPosition(worldPosition));
+	}
+
+	public GameObject GetObjectAt(Vector2Int cellPosition)
 	{
 		Debug.Assert(IsValidCellPosition(cellPosition), "Invalid cellPosition! " + cellPosition);
 
@@ -82,7 +110,7 @@ public class Board : MonoBehaviour {
 		
 		_self = this;
 
-		contents = new List<Object>(DIMS.x * DIMS.y);
+		contents = new List<GameObject>(DIMS.x * DIMS.y);
 		for (int i = 0; i < contents.Capacity; ++i) { contents.Add(null); }
 	}
 }
