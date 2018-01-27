@@ -9,10 +9,14 @@ public class FlyingBird : MonoBehaviour {
 	public float speed = 3f;
 	public Message message;
 
+	public Image actionIcon, directionIcon;
+
 	public void Initialize(GameObject target, GameObject launchPoint, Message message) {
 		this.message = message;
 		transform.position = launchPoint.transform.position;
 		this.target = target;
+
+		SetMessageIcons ();
 
 		GameObject.DestroyImmediate(launchPoint);
 	}
@@ -32,6 +36,32 @@ public class FlyingBird : MonoBehaviour {
 				GameObject.DestroyImmediate(target);
 				GameObject.DestroyImmediate(this.gameObject);
 			}
+		}
+	}
+
+	private void SetMessageIcons() {
+		switch (message.action) {
+		case Message.Action.shoot:
+			actionIcon.sprite = ResourceManager.self.attackIcon;
+			break;
+		case Message.Action.move:
+			actionIcon.sprite = ResourceManager.self.moveIcon;
+			break;
+		}
+
+		switch (message.dir) {
+		case Message.Dir.down:
+			directionIcon.sprite = ResourceManager.self.downArrow;
+			break;
+		case Message.Dir.up:
+			directionIcon.sprite = ResourceManager.self.upArrow;
+			break;
+		case Message.Dir.right:
+			directionIcon.sprite = ResourceManager.self.rightArrow;
+			break;
+		case Message.Dir.left:
+			directionIcon.sprite = ResourceManager.self.leftArrow;
+			break;
 		}
 	}
 }

@@ -6,10 +6,11 @@ public class ResourceManager : MonoBehaviour {
 
 	public static ResourceManager self;
 
-	public void Start() {
+	public void Awake() {
 		self = this;
 	}
 
 	public Sprite upArrow, downArrow, leftArrow, rightArrow;
 	public Sprite attackIcon, moveIcon;
+	public Sprite questionIcon;
 }

@@ -210,6 +210,7 @@ GameObject:
   - component: {fileID: 222665032789103328}
   - component: {fileID: 114431025523281770}
   - component: {fileID: 114167262455265182}
+  - component: {fileID: 114020043990552676}
   m_Layer: 5
   m_Name: MessageCreator
   m_TagString: Untagged
@@ -244,6 +245,19 @@ MonoBehaviour:
   m_FillAmount: 1
   m_FillClockwise: 1
   m_FillOrigin: 0
+--- !u!114 &114020043990552676
+MonoBehaviour:
+  m_ObjectHideFlags: 1
+  m_PrefabParentObject: {fileID: 0}
+  m_PrefabInternal: {fileID: 100100000}
+  m_GameObject: {fileID: 1986630962334004}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 618dcb2750757412392f38c8851f0bcd, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  birdPrefab: {fileID: 1406092279783666, guid: f9247417e87114a63bd021bf4c97075d, type: 2}
+  stage: 0
 --- !u!114 &114079692529208074
 MonoBehaviour:
   m_ObjectHideFlags: 1

@@ -71,7 +71,7 @@ GameObject:
   m_Component:
   - component: {fileID: 4069809072621234}
   - component: {fileID: 212512929502336548}
-  - component: {fileID: 114747044568828424}
+  - component: {fileID: 114949144883915058}
   m_Layer: 0
   m_Name: Bird
   m_TagString: Untagged
@@ -159,22 +159,6 @@ MonoBehaviour:
   m_FallbackScreenDPI: 96
   m_DefaultSpriteDPI: 96
   m_DynamicPixelsPerUnit: 1
---- !u!114 &114747044568828424
-MonoBehaviour:
-  m_ObjectHideFlags: 1
-  m_PrefabParentObject: {fileID: 0}
-  m_PrefabInternal: {fileID: 100100000}
-  m_GameObject: {fileID: 1406092279783666}
-  m_Enabled: 1
-  m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: 618dcb2750757412392f38c8851f0bcd, type: 3}
-  m_Name: 
-  m_EditorClassIdentifier: 
-  target: {fileID: 0}
-  launchPoint: {fileID: 0}
-  actionIcon: {fileID: 114934902667641588}
-  directionIcon: {fileID: 114037160144937884}
-  stage: 0
 --- !u!114 &114848627085335436
 MonoBehaviour:
   m_ObjectHideFlags: 1
@@ -229,6 +213,20 @@ MonoBehaviour:
   m_FillAmount: 1
   m_FillClockwise: 1
   m_FillOrigin: 0
+--- !u!114 &114949144883915058
+MonoBehaviour:
+  m_ObjectHideFlags: 1
+  m_PrefabParentObject: {fileID: 0}
+  m_PrefabInternal: {fileID: 100100000}
+  m_GameObject: {fileID: 1406092279783666}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: bf1f539052ad1402499257cb7e926f4e, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  speed: 0.4
+  actionIcon: {fileID: 114934902667641588}
+  directionIcon: {fileID: 114037160144937884}
 --- !u!114 &114968437105224958
 MonoBehaviour:
   m_ObjectHideFlags: 1

@@ -3,19 +3,14 @@ using System.Collections.Generic;
 using UnityEngine;
 using UnityEngine.UI;
 
-public class StagingBird : MonoBehaviour {
+public class BirdSpawner : MonoBehaviour {
 
-	public Message message;
-	public GameObject target;
-	public GameObject launchPoint;
+	private Message message;
+	private GameObject target;
+	private GameObject launchPoint;
 
-	public Image actionIcon, directionIcon;
+	public GameObject birdPrefab;
 
-	// First select action
-	// (up for shoot, down for move
-
-	// Then select action direction
-	// direction is obvious
 	public enum SelectionStage
 	{
 		Action, Dir
@@ -24,8 +19,15 @@ public class StagingBird : MonoBehaviour {
 	public SelectionStage stage = SelectionStage.Action;
 
 	void Start() {
+		ResetSelf ();
+	}
+
+	private void ResetSelf() {
 		message = new Message ();
-		MessageUI.self.SetSelectionStage (stage);
+		MessageUI.self.Reset ();
+
+		int initialStage = 0;
+		stage = (SelectionStage)initialStage;
 	}
 
 	void Update() {
@@ -70,35 +72,11 @@ public class StagingBird : MonoBehaviour {
 	private void UpdateMessageDir(Message.Dir dir) {
 		message.dir = dir;
 		MessageUI.self.SetDirSelectionChoice (dir);
-		Go ();
+		SpawnBird();
 	}
 
-	private void Go() {
-		switch (message.action) {
-		case Message.Action.shoot:
-			actionIcon.sprite = ResourceManager.self.attackIcon;
-			break;
-		case Message.Action.move:
-			actionIcon.sprite = ResourceManager.self.moveIcon;
-			break;
-		}
-
-		switch (message.dir) {
-		case Message.Dir.down:
-			directionIcon.sprite = ResourceManager.self.downArrow;
-			break;
-		case Message.Dir.up:
-			directionIcon.sprite = ResourceManager.self.upArrow;
-			break;
-		case Message.Dir.right:
-			directionIcon.sprite = ResourceManager.self.rightArrow;
-			break;
-		case Message.Dir.left:
-			directionIcon.sprite = ResourceManager.self.leftArrow;
-			break;
-		}
-
-		gameObject.AddComponent <FlyingBird>();
+	private void SpawnBird() {
+		GameObject flyingBird = Instantiate (birdPrefab);
 
 		target = new GameObject();
 		target.name = "Target";
@@ -108,8 +86,8 @@ public class StagingBird : MonoBehaviour {
 		launchPoint.name = "Launch";
 		launchPoint.transform.position = Board.self ? Board.GetBoardWorld(new Vector2(0.5f, 0f)) : new Vector3(0f, -5f, 0.5f);
 
-		gameObject.GetComponent <FlyingBird>().Initialize(target, launchPoint, message);
+		flyingBird.GetComponent <FlyingBird>().Initialize(target, launchPoint, message);
 
-		Destroy (this);
+		ResetSelf ();
 	}
 }

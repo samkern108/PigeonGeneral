@@ -14,13 +14,21 @@ public class MessageUI : MonoBehaviour {
 		self = this;
 	}
 
-	public void SetSelectionStage(StagingBird.SelectionStage stage) {
+	public void Reset() {
+		actionIcon.sprite = ResourceManager.self.questionIcon;
+		dirIcon.sprite = ResourceManager.self.questionIcon;
+
+		int firstStage = 0;
+		SetSelectionStage((BirdSpawner.SelectionStage)firstStage);
+	}
+
+	public void SetSelectionStage(BirdSpawner.SelectionStage stage) {
 		switch (stage) {
-		case StagingBird.SelectionStage.Action:
+		case BirdSpawner.SelectionStage.Action:
 			wasdDir.SetActive (false);
 			wasdAction.SetActive (true);
 			break;
-		case StagingBird.SelectionStage.Dir:
+		case BirdSpawner.SelectionStage.Dir:
 			wasdDir.SetActive (true);
 			wasdAction.SetActive (false);
 			break;
