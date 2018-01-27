@@ -60,7 +60,7 @@ MonoBehaviour:
     inputs: 14010000130100001201000011010000
   - index: 2
     launchPosition: {x: 0.5, y: 0, z: 0}
-    inputs: 
+    inputs: 670000006a0000006800000079000000
   - index: 3
     launchPosition: {x: 0.5, y: 0, z: 0}
-    inputs: 
+    inputs: 6c000000270000003b00000070000000
