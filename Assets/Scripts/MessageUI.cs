@@ -7,7 +7,7 @@ public class MessageUI : MonoBehaviour {
 
 	public static MessageUI self;
 
-	public GameObject wasdDir, wasdAction;
+	public GameObject wasdDir, wasdAction, wasdUnit;
 	public Image actionIcon, dirIcon;
 
 	void Awake() {
@@ -27,10 +27,17 @@ public class MessageUI : MonoBehaviour {
 		case BirdSpawner.SelectionStage.Action:
 			wasdDir.SetActive (false);
 			wasdAction.SetActive (true);
+			wasdUnit.SetActive (false);
 			break;
 		case BirdSpawner.SelectionStage.Dir:
 			wasdDir.SetActive (true);
 			wasdAction.SetActive (false);
+			wasdUnit.SetActive (false);
+			break;
+		case BirdSpawner.SelectionStage.Unit:
+			wasdDir.SetActive (false);
+			wasdAction.SetActive (false);
+			wasdUnit.SetActive (true);
 			break;
 		}
 	}

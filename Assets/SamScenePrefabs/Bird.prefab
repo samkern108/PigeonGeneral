@@ -224,7 +224,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: bf1f539052ad1402499257cb7e926f4e, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  speed: 0.4
+  speed: 4
   actionIcon: {fileID: 114934902667641588}
   directionIcon: {fileID: 114037160144937884}
 --- !u!114 &114968437105224958
