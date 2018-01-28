@@ -47,6 +47,7 @@ public class BirdSpawner : MonoBehaviour {
 			break;
 		case SelectionStage.Unit:
 			SelectUnit ();
+			ConfirmSend ();
 			break;
 		}
 	}
@@ -92,6 +93,12 @@ public class BirdSpawner : MonoBehaviour {
 			GameObject target = Player.livingBirds[playerIndex][targetIndex].gameObject;
 			highlighter.SetTarget(target);
 			hasSentValidMessage = true;
+		}
+	}
+
+	private void ConfirmSend() {
+		if (Input.GetKeyDown (GetKey (Message.Dir.up))) {
+			SpawnBird ();
 		}
 	}
 
