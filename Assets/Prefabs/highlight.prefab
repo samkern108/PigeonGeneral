@@ -36,6 +36,7 @@ GameObject:
   m_Component:
   - component: {fileID: 4266146093553254}
   - component: {fileID: 212091991291112490}
+  - component: {fileID: 114679924892515654}
   m_Layer: 0
   m_Name: sprite
   m_TagString: Untagged
@@ -82,6 +83,17 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   cursor: {fileID: 1363377747128334}
+--- !u!114 &114679924892515654
+MonoBehaviour:
+  m_ObjectHideFlags: 1
+  m_PrefabParentObject: {fileID: 0}
+  m_PrefabInternal: {fileID: 100100000}
+  m_GameObject: {fileID: 1363377747128334}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 1c743bb7746794cda85d8c79d3e20702, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
 --- !u!212 &212091991291112490
 SpriteRenderer:
   m_ObjectHideFlags: 1
