@@ -2,7 +2,7 @@
 using System.Collections;
 using System.IO;
 
-public enum PigeonPose { Idle = 0, Move = 1, Shoot = 2, Hurt = 3 };
+public enum PigeonPose { Idle = 0, Move = 1, Shoot = 2, Hurt = 3, Flex1 = 4, Flex2 = 5 };
 public enum SFX { shot, flap, birdCall };
 
 public class ResourceManager : MonoBehaviour {
@@ -35,7 +35,7 @@ public class ResourceManager : MonoBehaviour {
 	public AudioClip[] sfxBirdCalls;
 
 	public Sprite GetPigeonSprite(int playerIndex, PigeonPose pose) {
-		if ((int)pose > (pigeons.Length - 1))
+		if ((int)pose > (pigeons[playerIndex].Length - 1))
 			Debug.LogError ("We only have so many pigeons >:(");
 		
 		return pigeons[playerIndex][(int)pose];
