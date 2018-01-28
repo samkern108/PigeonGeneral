@@ -6,7 +6,7 @@ using UnityEngine.UI;
 public class BirdSpawner : MonoBehaviour {
 
 	private Message message;
-	private int targetIndex = -1;
+	private int targetIndex;
 
 	public GameObject birdPrefab;
 	public UnitHighlighter highlighter;
@@ -74,18 +74,21 @@ public class BirdSpawner : MonoBehaviour {
 	}
 		
 	private void SelectUnit() {
-		if (Input.GetKeyDown (GetKey(Message.Dir.up))) {
-			targetIndex = 0;
-		} else if (Input.GetKeyDown (GetKey(Message.Dir.left))) {
-			targetIndex = 1;
-		} else if (Input.GetKeyDown (GetKey(Message.Dir.down))) {
-			targetIndex = 2;
+		int targetLength = Player.livingBirds[playerIndex].Count;
+
+		bool changed = false;
+		if (Input.GetKeyDown (GetKey(Message.Dir.left))) {
+			targetIndex = (targetIndex + targetLength - 1) % targetLength;
+			changed = true;
 		} else if (Input.GetKeyDown (GetKey(Message.Dir.right))) {
-			targetIndex = 3;
+			targetIndex = (targetIndex + targetLength + 1) % targetLength;
+			changed = true;
 		}
 
-		GameObject target = Player.livingBirds[playerIndex][targetIndex].gameObject;
-		highlighter.SetTarget(target);
+		if (changed) {
+			GameObject target = Player.livingBirds[playerIndex][targetIndex].gameObject;
+			highlighter.SetTarget(target);
+		}
 	}
 
 	private void UpdateMessageAction(Message.Action action) {
