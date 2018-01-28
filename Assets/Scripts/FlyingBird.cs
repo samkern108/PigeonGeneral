@@ -9,14 +9,14 @@ public class FlyingBird : MonoBehaviour {
 	public float speed = 3f;
 	public Message message;
 
-	public Image actionIcon, directionIcon;
 	public Transform model;
 
-	public void Initialize(GameObject target, Vector3 launchPoint, Message message) {
+	public void Initialize(GameObject target, Message message) {
 		this.speed = Random.Range (1.0f, 4.0f);
 		this.message = message;
-		transform.position = launchPoint;
 		this.target = target;
+
+		model = transform.Find ("Model");
 
 		Vector3 forward = Vector3.up;
 		Vector3 toTarget = (target.transform.position - transform.position).normalized;
@@ -30,8 +30,6 @@ public class FlyingBird : MonoBehaviour {
 		}
 			
 		model.Rotate(new Vector3(0f, 0f, zRot));
-
-		SetMessageIcons ();
 	}
 
 	void Update () {
@@ -54,32 +52,6 @@ public class FlyingBird : MonoBehaviour {
 		}
 		else {
 			GameObject.DestroyImmediate(this.gameObject);			
-		}
-	}
-
-	private void SetMessageIcons() {
-		switch (message.action) {
-		case Message.Action.shoot:
-			actionIcon.sprite = ResourceManager.self.attackIcon;
-			break;
-		case Message.Action.move:
-			actionIcon.sprite = ResourceManager.self.moveIcon;
-			break;
-		}
-
-		switch (message.dir) {
-		case Message.Dir.down:
-			directionIcon.sprite = ResourceManager.self.downArrow;
-			break;
-		case Message.Dir.up:
-			directionIcon.sprite = ResourceManager.self.upArrow;
-			break;
-		case Message.Dir.right:
-			directionIcon.sprite = ResourceManager.self.rightArrow;
-			break;
-		case Message.Dir.left:
-			directionIcon.sprite = ResourceManager.self.leftArrow;
-			break;
 		}
 	}
 }
