@@ -41,13 +41,19 @@ public class BirdSpawner : MonoBehaviour {
 
 		if (currentSelectedUnit == unit) {
 			// pick new random selection? closest?
-			UnitController target = unit;
-			while (target == unit) {
-				targetIndex = Random.Range(0, Player.livingBirds[playerIndex].Count);
-
-				target = Player.livingBirds[playerIndex][targetIndex];
+			if (Player.livingBirds[playerIndex].Count == 1) {
+				Destroy(highlighter.gameObject);
+				Destroy(this);
 			}
-			highlighter.SetTarget(target.gameObject);
+			else {
+				UnitController target = unit;
+				while (target == unit) {
+					targetIndex = Random.Range(0, Player.livingBirds[playerIndex].Count);
+
+					target = Player.livingBirds[playerIndex][targetIndex];
+				}
+				highlighter.SetTarget(target.gameObject);
+			}
 		}
 
 		// adjust target index to match new shifted position of 
