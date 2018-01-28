@@ -148,7 +148,7 @@ public class Board : MonoBehaviour {
 		return new Vector2Int(index % DIMS.x, index / DIMS.x);
 	}
 
-	private void Awake() {
+	public void Initialize() {
 		if (self != null)
 		{
 			Debug.LogError("Grid self already exists!");
