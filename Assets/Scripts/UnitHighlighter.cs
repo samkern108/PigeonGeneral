@@ -6,6 +6,12 @@ public class UnitHighlighter : MonoBehaviour {
 
 	public GameObject cursor;
 	private GameObject target;
+	private SpriteRenderer cursorSR;
+
+	public void SetPlayerIndex(int playerIndex) {
+		cursorSR = cursor.GetComponent<SpriteRenderer> ();
+		cursorSR.color = Colors.lightColors[playerIndex];
+	}
 
 	public void SetTarget(GameObject target) {
 		this.target = target;

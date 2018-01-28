@@ -25,6 +25,7 @@ public class BirdSpawner : MonoBehaviour {
 	public MessageUI UI { get { return MessageUI.GetUIForPlayer(playerIndex); } }	
 
 	void Start() {
+		highlighter.SetPlayerIndex (playerIndex);
 		ResetSelf ();
 	}
 
