@@ -18,6 +18,9 @@ public class Player : MonoBehaviour {
 	static public readonly int PLAYER_COUNT = 4;
 	static public readonly int UNITS_PER_PLAYER = 4;
 
+	// :D
+	public static List<UnitController>[] livingBirds = new List<UnitController>[PLAYER_COUNT];
+
 	static public Player self { get { return _self; } }
 	static private Player _self;
 
@@ -38,5 +41,14 @@ public class Player : MonoBehaviour {
 		}
 
 		_self = this;
+	}
+		
+	private UnitController GetRandomBirdForPlayer(int playerIndex) {
+		int birdNum = Random.Range (0, livingBirds[playerIndex].Count);
+		return livingBirds[playerIndex][birdNum];
+	}
+
+	public static void KillBird(UnitController bird) {
+		livingBirds [bird.playerIndex].Remove (bird);
 	}
 }

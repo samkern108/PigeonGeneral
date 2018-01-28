@@ -26,7 +26,8 @@ public class FlyingBird : MonoBehaviour {
 		if (target.transform.position.x > transform.position.x) {
 			zRot *= -1f;
 		}
-
+			
+		Debug.Log("dot " + dot + " acos " + acos + " zRot " + zRot);
 		transform.Rotate(new Vector3(0f, 0f, zRot));
 
 		SetMessageIcons ();

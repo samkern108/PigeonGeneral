@@ -27,7 +27,7 @@ public class BirdSpawner : MonoBehaviour {
 
 	private void ResetSelf() {
 		message = new Message ();
-		targetIndex = Random.Range (0, Player.UNITS_PER_PLAYER);
+		targetIndex = Random.Range (0, Player.livingBirds[playerIndex].Count);
 		UI.Reset ();
 
 		int initialStage = 0;
@@ -104,9 +104,8 @@ public class BirdSpawner : MonoBehaviour {
 	public void SpawnBird() {
 		GameObject flyingBird = Instantiate (birdPrefab);
 
-		int index = targetIndex * Player.PLAYER_COUNT + playerIndex;
-
-		GameObject target = GameController.self.unitControllers[targetIndex].gameObject;
+		Debug.Log ("PINDEX " + targetIndex + " : " + Player.livingBirds[playerIndex].Count);
+		GameObject target = Player.livingBirds[playerIndex][targetIndex].gameObject;
 
 		GameObject launchPoint = new GameObject();
 		launchPoint.name = "Launch";

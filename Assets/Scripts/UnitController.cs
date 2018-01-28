@@ -19,7 +19,7 @@ public class UnitController : MonoBehaviour {
 	}
 
 	public void SubmitMessage(Message msg) {
-		Debug.Log("Message received at " + Board.GetCellPosition(this.transform.position));
+		//Debug.Log("Message received at " + Board.GetCellPosition(this.transform.position));
 
 		messageQueue.Enqueue(msg);
 	}
@@ -68,11 +68,18 @@ public class UnitController : MonoBehaviour {
 	private void Shoot(Vector2Int source, Vector2Int target) {
 		if (Board.IsValidCellPosition(target)) {
 			GameObject obj = Board.self.GetObjectAt(target);
-			Board.self.RemoveObjectAt(target);
+			if (obj != null) {
+				Board.self.RemoveObjectAt (target);
+
+				UnitController uc = obj.GetComponent<UnitController> ();
+				if (uc != null) {
+					Player.KillBird (uc);
+				}
+
+				GameObject.DestroyImmediate (obj);
+			}
 
 			spawnShotVfx(source, target);
-
-			GameObject.DestroyImmediate(obj);
 		}
 	}
 
