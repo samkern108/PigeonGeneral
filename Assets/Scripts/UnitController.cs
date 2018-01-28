@@ -24,7 +24,7 @@ public class UnitController : MonoBehaviour {
 		messageQueue.Enqueue(msg);
 	}
 
-	private void Awake() {
+	private void Start() {
 		messageQueue = new Queue<Message>();
 	}
 

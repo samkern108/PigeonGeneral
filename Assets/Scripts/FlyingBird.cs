@@ -12,10 +12,10 @@ public class FlyingBird : MonoBehaviour {
 	public Image actionIcon, directionIcon;
 	public Transform model;
 
-	public void Initialize(GameObject target, GameObject launchPoint, Message message) {
+	public void Initialize(GameObject target, Vector3 launchPoint, Message message) {
 		this.speed = Random.Range (1.0f, 4.0f);
 		this.message = message;
-		transform.position = launchPoint.transform.position;
+		transform.position = launchPoint;
 		this.target = target;
 
 		Vector3 forward = Vector3.up;
@@ -33,8 +33,6 @@ public class FlyingBird : MonoBehaviour {
 		model.Rotate(new Vector3(0f, 0f, zRot));
 
 		SetMessageIcons ();
-
-		GameObject.DestroyImmediate(launchPoint);
 	}
 
 	void Update () {

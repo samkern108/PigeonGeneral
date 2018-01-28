@@ -18,7 +18,7 @@ public class UnitHighlighter : MonoBehaviour {
 		UpdatePosition();
 	}
 
-	private void Awake() {
+	private void Start() {
 		GameObject.Instantiate(cursor, new Vector3(-999f, 0f, 0f), Quaternion.identity);
 	}
 

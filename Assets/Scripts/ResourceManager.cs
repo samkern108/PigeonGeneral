@@ -6,7 +6,7 @@ public class ResourceManager : MonoBehaviour {
 
 	public static ResourceManager self;
 
-	public void Awake() {
+	public void Initialize() {
 		self = this;
 		
 		pigeons = new Sprite[4][] {
