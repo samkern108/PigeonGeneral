@@ -126,6 +126,10 @@ public class Animate : MonoBehaviour {
 		}
 	}
 
+	public void StopAnimating() {
+		Timing.KillCoroutines (tag);
+	}
+
 	void OnDestroy() {
 		Timing.KillCoroutines (tag);
 	}
