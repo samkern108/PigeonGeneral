@@ -158,14 +158,14 @@ public class BirdSpawner : MonoBehaviour {
 		if (Player.livingBirds[playerIndex].Count > 0) {
 			GameObject target = Player.livingBirds[playerIndex][targetIndex].gameObject;
 
-		/*GameObject launchPoint = new GameObject();
-		launchPoint.name = "Launch";
-		launchPoint.transform.position = this.transform.position;//Board.self ? Board.GetRandomPointOnBorder() : new Vector3(0f, -5f, 0.5f);*/
+			/*GameObject launchPoint = new GameObject();
+			launchPoint.name = "Launch";
+			launchPoint.transform.position = this.transform.position;//Board.self ? Board.GetRandomPointOnBorder() : new Vector3(0f, -5f, 0.5f);*/
 
-		flyingBird.GetComponent <FlyingBird>().Initialize(target, transform.position, message);
+			flyingBird.GetComponent <FlyingBird>().Initialize(target, transform.position, message);
 
-		flyingBird.GetComponentInChildren <SpriteRenderer>().color = Colors.lightColors[playerIndex];
-
+			flyingBird.GetComponentInChildren <SpriteRenderer>().color = Colors.lightColors[playerIndex];
+		}
 
 		ResetSelf ();
 	}
