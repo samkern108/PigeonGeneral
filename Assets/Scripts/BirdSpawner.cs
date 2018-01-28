@@ -111,6 +111,7 @@ public class BirdSpawner : MonoBehaviour {
 	public void SpawnBird() {
 		GameObject flyingBird = Instantiate (birdPrefab);
 
+		targetIndex = Random.Range (0, Player.livingBirds [playerIndex].Count);
 		GameObject target = Player.livingBirds[playerIndex][targetIndex].gameObject;
 
 		GameObject launchPoint = new GameObject();
