@@ -9,6 +9,7 @@ public class BirdSpawner : MonoBehaviour {
 	private int targetIndex = -1;
 
 	public GameObject birdPrefab;
+	public UnitHighlighter highlighter;
 
 	public int playerIndex;
 
@@ -82,6 +83,9 @@ public class BirdSpawner : MonoBehaviour {
 		} else if (Input.GetKeyDown (GetKey(Message.Dir.right))) {
 			targetIndex = 3;
 		}
+
+		GameObject target = Player.livingBirds[playerIndex][targetIndex].gameObject;
+		highlighter.SetTarget(target);
 	}
 
 	private void UpdateMessageAction(Message.Action action) {
@@ -103,8 +107,6 @@ public class BirdSpawner : MonoBehaviour {
 	public void SpawnBird() {
 		GameObject flyingBird = Instantiate (birdPrefab);
 
-		Debug.Log ("PINDEX " + targetIndex + " : " + Player.livingBirds[playerIndex].Count);
-		targetIndex = Random.Range (0, Player.livingBirds[playerIndex].Count);
 		GameObject target = Player.livingBirds[playerIndex][targetIndex].gameObject;
 
 		GameObject launchPoint = new GameObject();
