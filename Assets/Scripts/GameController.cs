@@ -9,6 +9,8 @@ public class GameController : MonoBehaviour {
 	public ResourceManager resourcePrefab;
 	public Board board;
 
+	public GameObject[] spawners;
+
 	static public GameController self { get { return _self; } } 
 	static private GameController _self;
 
@@ -18,6 +20,15 @@ public class GameController : MonoBehaviour {
 		board.Initialize ();
 		if (ResourceManager.self == null) {
 			GameObject.Instantiate(resourcePrefab);
+		}
+
+		for (int i = 0; i < Player.PLAYER_COUNT; ++i) {
+			if (ResourceManager.self.isPlayerActive[i]) {
+				spawners[i].GetComponent<PlayerController>().enabled = true;
+			}
+			else {
+				spawners[i].GetComponent<AIPlayer>().enabled = true;
+			}
 		}
 
 		_self = this;
