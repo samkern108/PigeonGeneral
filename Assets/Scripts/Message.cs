@@ -4,7 +4,7 @@ using UnityEngine;
 
 public class Message {
 	public enum Action { shoot, move };
-	public enum Dir { left, right, down, up };
+	public enum Dir { left, right, down, up, COUNT };
 
 	public Action action;
 	public Dir dir;
