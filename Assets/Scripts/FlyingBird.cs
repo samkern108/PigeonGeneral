@@ -10,6 +10,7 @@ public class FlyingBird : MonoBehaviour {
 	public Message message;
 
 	public Image actionIcon, directionIcon;
+	public Transform model;
 
 	public void Initialize(GameObject target, GameObject launchPoint, Message message) {
 		this.message = message;
@@ -28,7 +29,7 @@ public class FlyingBird : MonoBehaviour {
 		}
 			
 		Debug.Log("dot " + dot + " acos " + acos + " zRot " + zRot);
-		transform.Rotate(new Vector3(0f, 0f, zRot));
+		model.Rotate(new Vector3(0f, 0f, zRot));
 
 		SetMessageIcons ();
 

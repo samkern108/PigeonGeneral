@@ -70,11 +70,9 @@ GameObject:
   serializedVersion: 5
   m_Component:
   - component: {fileID: 4069809072621234}
-  - component: {fileID: 212512929502336548}
   - component: {fileID: 114949144883915058}
-  - component: {fileID: 95696361327387294}
   m_Layer: 0
-  m_Name: Bird
+  m_Name: Pigeon
   m_TagString: Untagged
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
@@ -98,6 +96,23 @@ GameObject:
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
   m_IsActive: 1
+--- !u!1 &1603543285785036
+GameObject:
+  m_ObjectHideFlags: 0
+  m_PrefabParentObject: {fileID: 0}
+  m_PrefabInternal: {fileID: 100100000}
+  serializedVersion: 5
+  m_Component:
+  - component: {fileID: 4153135379721194}
+  - component: {fileID: 212568445078164946}
+  - component: {fileID: 95192754685222606}
+  m_Layer: 0
+  m_Name: Model
+  m_TagString: Untagged
+  m_Icon: {fileID: 0}
+  m_NavMeshLayer: 0
+  m_StaticEditorFlags: 0
+  m_IsActive: 1
 --- !u!4 &4069809072621234
 Transform:
   m_ObjectHideFlags: 1
@@ -109,16 +124,30 @@ Transform:
   m_LocalScale: {x: 1, y: 1, z: 1}
   m_Children:
   - {fileID: 224378570314009264}
+  - {fileID: 4153135379721194}
   m_Father: {fileID: 0}
   m_RootOrder: 0
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
---- !u!95 &95696361327387294
+--- !u!4 &4153135379721194
+Transform:
+  m_ObjectHideFlags: 1
+  m_PrefabParentObject: {fileID: 0}
+  m_PrefabInternal: {fileID: 100100000}
+  m_GameObject: {fileID: 1603543285785036}
+  m_LocalRotation: {x: -0, y: -0, z: -0, w: 1}
+  m_LocalPosition: {x: 0, y: 0, z: 0}
+  m_LocalScale: {x: 1, y: 1, z: 1}
+  m_Children: []
+  m_Father: {fileID: 4069809072621234}
+  m_RootOrder: 1
+  m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
+--- !u!95 &95192754685222606
 Animator:
   serializedVersion: 3
   m_ObjectHideFlags: 1
   m_PrefabParentObject: {fileID: 0}
   m_PrefabInternal: {fileID: 100100000}
-  m_GameObject: {fileID: 1406092279783666}
+  m_GameObject: {fileID: 1603543285785036}
   m_Enabled: 1
   m_Avatar: {fileID: 0}
   m_Controller: {fileID: 9100000, guid: dca9cce1881f4024c8e7d44ce3dd9b62, type: 2}
@@ -245,6 +274,7 @@ MonoBehaviour:
   speed: 4
   actionIcon: {fileID: 114934902667641588}
   directionIcon: {fileID: 114037160144937884}
+  model: {fileID: 4153135379721194}
 --- !u!114 &114968437105224958
 MonoBehaviour:
   m_ObjectHideFlags: 1
@@ -261,12 +291,12 @@ MonoBehaviour:
   m_BlockingMask:
     serializedVersion: 2
     m_Bits: 4294967295
---- !u!212 &212512929502336548
+--- !u!212 &212568445078164946
 SpriteRenderer:
   m_ObjectHideFlags: 1
   m_PrefabParentObject: {fileID: 0}
   m_PrefabInternal: {fileID: 100100000}
-  m_GameObject: {fileID: 1406092279783666}
+  m_GameObject: {fileID: 1603543285785036}
   m_Enabled: 1
   m_CastShadows: 0
   m_ReceiveShadows: 0
