@@ -98,6 +98,9 @@ public class UnitController : MonoBehaviour {
 	private void StopMoving() {
 		Board.self.AddObjectAt(this.gameObject, endPosition);
 		model.pigeon.sprite = ResourceManager.self.GetPigeonSprite (playerIndex, PigeonPose.Idle);
+
+		this.transform.position = model.transform.position;
+		model.transform.localPosition = Vector3.zero;
 	}
 
 	private void Shoot(Vector2Int source, Vector2Int target) {
