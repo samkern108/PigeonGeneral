@@ -20,7 +20,7 @@ public class MainMenu : MonoBehaviour {
 	// Update is called once per frame
 	void Update () {
 		if (Input.GetKeyDown(KeyCode.A)
-		||	Input.GetKeyDown(KeyCode.D)) {
+			||	Input.GetKeyDown(KeyCode.D) ||	Input.GetKeyDown(KeyCode.LeftArrow) ||	Input.GetKeyDown(KeyCode.RightArrow)) {
 			ResourceManager.self.PlaySound(SFX.birdCall);
 			SetActiveButton(GetOtherButton(currentButton));
 		}
