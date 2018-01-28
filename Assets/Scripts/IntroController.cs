@@ -12,6 +12,8 @@ public class IntroController : MonoBehaviour {
 
 	public BirdSpawner[] birdSpawners;
 	public PlayerController[] playerControllers;
+	public GameObject[] instructionUIs;
+	public GameObject[] actionUIs;
 	public Text enterText;
 
 	private Vector2Int[] spawnPositions = new Vector2Int[] {
@@ -92,6 +94,9 @@ public class IntroController : MonoBehaviour {
 								Player.livingBirds [playerIndex].Add (unit);
 
 								Board.self.AddObjectAt(obj, cellPosition);
+
+								instructionUIs[playerIndex].SetActive(false);
+								actionUIs[playerIndex].SetActive(true);
 
 								enterText.enabled = true;
 								birdSpawners[playerIndex].enabled = true;
