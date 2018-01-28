@@ -66,6 +66,12 @@ public class IntroController : MonoBehaviour {
 	}
 
 	private void Update() {
+		if (Input.GetKeyDown(KeyCode.Escape)) {
+			Destroy(ResourceManager.self.gameObject);
+
+			Application.LoadLevel("MainMenu");
+		}
+
 		if (Input.GetKeyDown(KeyCode.Return)
 		||	Input.GetKeyDown(KeyCode.Space)) {
 			Application.LoadLevel("Game");

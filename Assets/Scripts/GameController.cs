@@ -78,4 +78,12 @@ public class GameController : MonoBehaviour {
 		}
 	}
 
+	private void Update() {
+		if (Input.GetKeyDown(KeyCode.Escape)) {
+			Destroy(ResourceManager.self.gameObject);
+
+			Application.LoadLevel("MainMenu");
+		}
+	}
+
 }

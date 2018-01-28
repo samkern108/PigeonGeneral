@@ -10,6 +10,10 @@ public class ResourceManager : MonoBehaviour {
 	public static ResourceManager self;
 
 	private void Awake() {
+		if (self != null) {
+			Destroy(this.gameObject);
+			return;
+		}
 		self = this;
 		
 		pigeons = new Sprite[4][] {
@@ -17,7 +21,7 @@ public class ResourceManager : MonoBehaviour {
 		};
 
 		DontDestroyOnLoad(this.gameObject);
-		
+
 		isPlayerActive = new bool[Player.PLAYER_COUNT];
 	}
 	
