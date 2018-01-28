@@ -114,6 +114,7 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   frame: {fileID: 212978107950949310}
+  pigeon: {fileID: 0}
 --- !u!114 &114359756753700240
 MonoBehaviour:
   m_ObjectHideFlags: 1
@@ -140,6 +141,7 @@ MonoBehaviour:
   pigeonIndex: 0
   model: {fileID: 114310364263739604}
   shotVfx: {fileID: 1713931489383274, guid: be8fd70ee5bf14340bf0ad0f75d7f5db, type: 2}
+  featherVfx: {fileID: 1638565447964244, guid: bbb15f5da86524f1eaf2a5d6f63c7efe, type: 2}
 --- !u!212 &212291202847817034
 SpriteRenderer:
   m_ObjectHideFlags: 1
