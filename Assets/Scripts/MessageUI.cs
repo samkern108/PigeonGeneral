@@ -27,7 +27,7 @@ public class MessageUI : MonoBehaviour {
 		messageUIs[spawner.playerIndex] = this;
 
 		Image img = this.gameObject.GetComponent<Image>();
-		img.color = Colors.playerColors[spawner.playerIndex];
+		img.color = Colors.midColors[spawner.playerIndex];
 	}
 
 	public void Reset() {

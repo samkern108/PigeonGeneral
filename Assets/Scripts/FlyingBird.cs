@@ -13,6 +13,7 @@ public class FlyingBird : MonoBehaviour {
 	public Transform model;
 
 	public void Initialize(GameObject target, GameObject launchPoint, Message message) {
+		this.speed = Random.Range (1.0f, 4.0f);
 		this.message = message;
 		transform.position = launchPoint.transform.position;
 		this.target = target;

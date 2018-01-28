@@ -131,6 +131,8 @@ public class BirdSpawner : MonoBehaviour {
 
 		flyingBird.GetComponent <FlyingBird>().Initialize(target, launchPoint, message);
 
+		flyingBird.GetComponentInChildren <SpriteRenderer>().color = Colors.lightColors[playerIndex];
+
 		ResetSelf ();
 	}
 }
