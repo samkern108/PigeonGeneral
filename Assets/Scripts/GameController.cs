@@ -7,7 +7,6 @@ public class GameController : MonoBehaviour {
 	public GameObject unitPrefab;
 	public GameObject obstaclePrefab;
 	public Board board;
-	public ResourceManager resourceManager;
 
 	static public GameController self { get { return _self; } } 
 	static private GameController _self;
@@ -16,7 +15,6 @@ public class GameController : MonoBehaviour {
 
 		// Initialize all important objects just so we don't run into Awake() execution race conditons
 		board.Initialize ();
-		resourceManager.Initialize ();
 
 		_self = this;
 

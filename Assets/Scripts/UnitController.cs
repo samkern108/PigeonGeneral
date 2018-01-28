@@ -35,6 +35,7 @@ public class UnitController : MonoBehaviour {
 	}
 
 	public void Die() {
+		ResourceManager.self.PlaySound(SFX.birdCall);
 		model.pigeon.sprite = ResourceManager.self.GetPigeonSprite (playerIndex, PigeonPose.Hurt);
 		animate.AnimateToColor (model.pigeon.color, Color.red, 5.0f, Animate.RepeatMode.Once);
 		Invoke ("DestroySelf", 2.0f);
@@ -131,6 +132,8 @@ public class UnitController : MonoBehaviour {
 			model.pigeon.sprite = ResourceManager.self.GetPigeonSprite(playerIndex, PigeonPose.Shoot);
 			Invoke ("StopShoot", .5f);
 			spawnShotVfx(source, target);
+
+			ResourceManager.self.PlaySound(SFX.shot);
 		}
 	}
 

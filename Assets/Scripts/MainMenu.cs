@@ -21,12 +21,14 @@ public class MainMenu : MonoBehaviour {
 	void Update () {
 		if (Input.GetKeyDown(KeyCode.A)
 		||	Input.GetKeyDown(KeyCode.D)) {
+			ResourceManager.self.PlaySound(SFX.birdCall);
 			SetActiveButton(GetOtherButton(currentButton));
 		}
 
 		if (Input.GetKeyDown(KeyCode.W)
 		||	Input.GetKeyDown(KeyCode.Space)
 		||	Input.GetKeyDown(KeyCode.Return)) {
+			ResourceManager.self.PlaySound(SFX.flap);
 			if (currentButton == playButton) {
 				Application.LoadLevel("Game");
 			}
