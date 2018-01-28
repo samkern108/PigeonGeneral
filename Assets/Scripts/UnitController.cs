@@ -6,6 +6,8 @@ public class UnitController : MonoBehaviour {
 
 	public delegate void OnDeath(UnitController unit);
 
+	private const float FLEX_DELAY = 3f;
+
 	public int playerIndex, pigeonIndex;
 	public UnitModel model;
 	public GameObject shotVfx;
@@ -16,18 +18,27 @@ public class UnitController : MonoBehaviour {
 	private Animate animate;
 	private OnDeath onDeath;
 
+	private float timeSinceLastMessage = 0f;
+	private Vector2 origScale;
+	private Color origColor;
+
 	public void Init(int playerIndex, int pigeonIndex) {
 		this.playerIndex = playerIndex;
 		this.pigeonIndex = pigeonIndex;
 
 		model.Init(playerIndex, pigeonIndex);
 		animate = GetComponentInChildren<Animate>();
+
+		origScale = new Vector2(model.pigeon.transform.localScale.x, model.pigeon.transform.localScale.y);
+		origColor = model.pigeon.color;
 	}
 
 	public void SubmitMessage(Message msg) {
 		//Debug.Log("Message received at " + Board.GetCellPosition(this.transform.position));
 
 		messageQueue.Enqueue(msg);
+
+		timeSinceLastMessage = 0f;
 	}
 
 	public void RegisterOnDeath(OnDeath callback) {
@@ -36,9 +47,15 @@ public class UnitController : MonoBehaviour {
 
 	public void Die() {
 		ResourceManager.self.PlaySound(SFX.birdCall);
+
+		timeSinceLastMessage = -999f;
+
 		model.pigeon.sprite = ResourceManager.self.GetPigeonSprite (playerIndex, PigeonPose.Hurt);
+
+		ResetVisuals();
 		animate.AnimateToColor (model.pigeon.color, Color.red, 5.0f, Animate.RepeatMode.Once);
 		Invoke ("DestroySelf", 2.0f);
+
 		onDeath(this);
 	}
 
@@ -74,6 +91,18 @@ public class UnitController : MonoBehaviour {
 
 			activeMessage = null;
 		}
+		else {
+			timeSinceLastMessage += Time.deltaTime;
+
+			if (timeSinceLastMessage > FLEX_DELAY) {
+				model.pigeon.sprite = ResourceManager.self.GetPigeonSprite(playerIndex, Random.Range(0f, 1f) > 0.5f ? PigeonPose.Flex1 : PigeonPose.Flex2);
+
+				ResetVisuals();
+				animate.AnimateToSize(new Vector2(0.5f, 0.5f), new Vector2(.55f, .55f), 0.5f, Animate.RepeatMode.OnceAndBack);
+
+				timeSinceLastMessage = FLEX_DELAY / 2f;
+			}
+		}
 	}
 
 	// So the invoke call can use it :|
@@ -84,6 +113,8 @@ public class UnitController : MonoBehaviour {
 				Board.self.RemoveObject (this.gameObject);
 
 				Vector3 newPosition = Board.GetCellCenterWorld (end);
+
+				ResetVisuals();
 				animate.AnimateToPosition (transform.position, newPosition, .3f, Animate.RepeatMode.Once);
 				// TODO(samkern): Simple shader to animate this to a flat white? :)
 				//animate.AnimateToColor (model.pigeon.color, Color.red, .2f, Animate.RepeatMode.OnceAndBack);
@@ -100,6 +131,7 @@ public class UnitController : MonoBehaviour {
 	}
 
 	private void InvalidMove() {
+		ResetVisuals();
 		animate.AnimateToColor (model.pigeon.color, Color.red, .2f, Animate.RepeatMode.OnceAndBack);
 		//model.pigeon.sprite = ResourceManager.self.GetPigeonSprite (playerIndex, PigeonPose.Move);
 	}
@@ -128,6 +160,7 @@ public class UnitController : MonoBehaviour {
 				}
 			}
 
+			ResetVisuals();
 			animate.AnimateToRotation (Quaternion.identity, Quaternion.Euler(0f, 0f, -30), .2f, Animate.RepeatMode.OnceAndBack);
 			model.pigeon.sprite = ResourceManager.self.GetPigeonSprite(playerIndex, PigeonPose.Shoot);
 			Invoke ("StopShoot", .5f);
@@ -154,6 +187,11 @@ public class UnitController : MonoBehaviour {
 			}
 
 			GameObject.Instantiate(shotVfx, transform.position, Quaternion.Euler(0f, 0f, zRot));
+	}
+
+	private void ResetVisuals() {
+		model.pigeon.color = origColor;
+		model.pigeon.transform.localScale = origScale;
 	}
 	
 }
