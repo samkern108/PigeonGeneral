@@ -8,7 +8,6 @@ public class MessageUI : MonoBehaviour {
 	public static MessageUI self;
 
 	public GameObject wasdDir, wasdAction;
-	public Image actionIcon, dirIcon;
 
 	public static MessageUI GetUIForPlayer(int playerIndex) {
 		return messageUIs[playerIndex];
@@ -31,13 +30,9 @@ public class MessageUI : MonoBehaviour {
 
 		wasdDir.GetComponent<Image> ().color = Colors.lightColors[spawner.playerIndex];
 		wasdAction.GetComponent<Image> ().color = Colors.lightColors[spawner.playerIndex];
-		dirIcon.color = Colors.lightColors[spawner.playerIndex];
 	}
 
 	public void Reset() {
-		actionIcon.sprite = ResourceManager.self.questionIcon;
-		dirIcon.sprite = ResourceManager.self.questionIcon;
-
 		int firstStage = 0;
 		SetSelectionStage((BirdSpawner.SelectionStage)firstStage);
 	}
@@ -51,34 +46,6 @@ public class MessageUI : MonoBehaviour {
 		case BirdSpawner.SelectionStage.Dir:
 			wasdDir.SetActive (true);
 			wasdAction.SetActive (false);
-			break;
-		}
-	}
-
-	public void SetActionSelectionChoice(Message.Action action) {
-		switch (action) {
-		case Message.Action.shoot:
-			actionIcon.sprite = ResourceManager.self.attackIcon;
-			break;
-		case Message.Action.move:
-			actionIcon.sprite = ResourceManager.self.moveIcon;
-			break;
-		}
-	}
-
-	public void SetDirSelectionChoice(Message.Dir dir) {
-		switch (dir) {
-		case Message.Dir.down:
-			dirIcon.sprite = ResourceManager.self.downArrow;
-			break;
-		case Message.Dir.left:
-			dirIcon.sprite = ResourceManager.self.leftArrow;
-			break;
-		case Message.Dir.right:
-			dirIcon.sprite = ResourceManager.self.rightArrow;
-			break;
-		case Message.Dir.up:
-			dirIcon.sprite = ResourceManager.self.upArrow;
 			break;
 		}
 	}

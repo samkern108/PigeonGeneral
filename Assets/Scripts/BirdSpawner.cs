@@ -10,6 +10,9 @@ public class BirdSpawner : MonoBehaviour {
 
 	public GameObject birdPrefab;
 	public UnitHighlighter highlighter;
+	public Transform spawnPoint;
+
+	private FlyingBirdUI stagedBird;
 
 	public int playerIndex;
 
@@ -73,6 +76,10 @@ public class BirdSpawner : MonoBehaviour {
 		message = new Message ();
 		UI.Reset ();
 
+		stagedBird = Instantiate (birdPrefab).GetComponent<FlyingBirdUI>();
+		stagedBird.GetComponentInChildren <SpriteRenderer>().color = Colors.lightColors[playerIndex];
+		stagedBird.transform.position = spawnPoint.position;
+
 		int initialStage = 0;
 		stage = (SelectionStage)initialStage;
 	}
@@ -105,12 +112,6 @@ public class BirdSpawner : MonoBehaviour {
 		else {
 			SelectUnit ();
 		}
-		/*else if (Input.GetKeyDown (Message.Dir.left)) {
-			SelectUnit ();
-		}
-		else if (Input.GetKeyDown (Message.Dir.right)) {
-			SelectUnit ();
-		}*/
 	}
 
 	private void SelectDir() {
@@ -147,29 +148,20 @@ public class BirdSpawner : MonoBehaviour {
 		message.action = action;
 		stage = SelectionStage.Dir;
 
-		UI.SetActionSelectionChoice (action);
+		stagedBird.SetActionSelectionChoice (action);
 		UI.SetSelectionStage (stage);
 	}
 
 	private void UpdateMessageDir(Message.Dir dir) {
 		message.dir = dir;
-		UI.SetDirSelectionChoice (dir);
+		stagedBird.SetDirSelectionChoice (dir);
 		SpawnBird ();
 	}
 
 	public void SpawnBird() {
-		GameObject flyingBird = Instantiate (birdPrefab);
-
 		if (Player.livingBirds[playerIndex].Count > 0) {
 			GameObject target = Player.livingBirds[playerIndex][targetIndex].gameObject;
-
-			/*GameObject launchPoint = new GameObject();
-			launchPoint.name = "Launch";
-			launchPoint.transform.position = this.transform.position;//Board.self ? Board.GetRandomPointOnBorder() : new Vector3(0f, -5f, 0.5f);*/
-
-			flyingBird.GetComponent <FlyingBird>().Initialize(target, transform.position, message);
-
-			flyingBird.GetComponentInChildren <SpriteRenderer>().color = Colors.lightColors[playerIndex];
+			stagedBird.gameObject.AddComponent <FlyingBird>().Initialize(target, message);
 		}
 
 		ResetSelf ();
