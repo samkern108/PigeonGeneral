@@ -13,8 +13,6 @@ public class BirdSpawner : MonoBehaviour {
 
 	public int playerIndex;
 
-	private bool hasSentValidMessage = false;
-
 	public enum SelectionStage
 	{
 		Action, Dir, Unit
@@ -27,6 +25,42 @@ public class BirdSpawner : MonoBehaviour {
 	void Start() {
 		ResetSelf ();
 		highlighter.SetPlayer(playerIndex);
+
+		targetIndex = 0;
+		GameObject target = Player.livingBirds[playerIndex][targetIndex].gameObject;
+		highlighter.SetTarget(target);
+
+		for (int i = 0; i < Player.UNITS_PER_PLAYER; ++i) {
+			UnitController unit = Player.livingBirds[playerIndex][i];
+			unit.RegisterOnDeath(OnPlayerUnitDeath);
+		}
+	}
+
+	private void OnPlayerUnitDeath(UnitController unit) {
+		UnitController currentSelectedUnit = Player.livingBirds[playerIndex][targetIndex];
+
+		if (currentSelectedUnit == unit) {
+			// pick new random selection? closest?
+			UnitController target = unit;
+			while (target == unit) {
+				targetIndex = Random.Range(0, Player.livingBirds[playerIndex].Count);
+
+				target = Player.livingBirds[playerIndex][targetIndex];
+			}
+			highlighter.SetTarget(target.gameObject);
+		}
+
+		// adjust target index to match new shifted position of 
+		//   currently selected unit
+		for (int i = 0; i < Player.livingBirds[playerIndex].Count; ++i) {
+			if (Player.livingBirds[playerIndex][i] == unit) {
+				if (targetIndex > i) {
+					--targetIndex;
+
+					break;
+				}
+			}
+		}
 	}
 
 	private void ResetSelf() {
@@ -92,7 +126,6 @@ public class BirdSpawner : MonoBehaviour {
 		if (changed) {
 			GameObject target = Player.livingBirds[playerIndex][targetIndex].gameObject;
 			highlighter.SetTarget(target);
-			hasSentValidMessage = true;
 		}
 	}
 
@@ -120,10 +153,6 @@ public class BirdSpawner : MonoBehaviour {
 
 	public void SpawnBird() {
 		GameObject flyingBird = Instantiate (birdPrefab);
-
-		if (!hasSentValidMessage || targetIndex >= Player.livingBirds[playerIndex].Count) {
-			targetIndex = Random.Range (0, Player.livingBirds [playerIndex].Count);
-		}
 
 		if (Player.livingBirds[playerIndex].Count > 0) {
 			GameObject target = Player.livingBirds[playerIndex][targetIndex].gameObject;
