@@ -10,7 +10,7 @@ public class UnitController : MonoBehaviour {
 
 	public int playerIndex, pigeonIndex;
 	public UnitModel model;
-	public GameObject shotVfx, featherVfx;
+	public GameObject shotVfx, featherVfx, moveVfx, confusedVfx;
 
 	private Message activeMessage;
 	private Queue<Message> messageQueue;
@@ -121,7 +121,7 @@ public class UnitController : MonoBehaviour {
 				//animate.AnimateToColor (model.pigeon.color, Color.red, .2f, Animate.RepeatMode.OnceAndBack);
 				model.pigeon.sprite = ResourceManager.self.GetPigeonSprite (playerIndex, PigeonPose.Move);
 
-				//spawnDirectedVfx(featherVfx, end, start);
+				spawnDirectedVfx(moveVfx, start, end);
 
 				endPosition = end;
 				Invoke ("StopMoving", .3f);

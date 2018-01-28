@@ -142,6 +142,8 @@ MonoBehaviour:
   model: {fileID: 114310364263739604}
   shotVfx: {fileID: 1713931489383274, guid: be8fd70ee5bf14340bf0ad0f75d7f5db, type: 2}
   featherVfx: {fileID: 1949045335370000, guid: c93215ca008464a29bda6783ce4133a8, type: 2}
+  moveVfx: {fileID: 1327399124684204, guid: 744bf13a9ba469449a37684b70db8dda, type: 2}
+  confusedVfx: {fileID: 0}
 --- !u!212 &212291202847817034
 SpriteRenderer:
   m_ObjectHideFlags: 1
