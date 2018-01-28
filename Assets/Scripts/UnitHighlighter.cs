@@ -7,6 +7,11 @@ public class UnitHighlighter : MonoBehaviour {
 	public GameObject cursor;
 	private GameObject target;
 
+	public void SetPlayer(int playerIndex) {
+		SpriteRenderer sr = cursor.GetComponent<SpriteRenderer>();
+		//sr.color = Colors.playerColors[playerIndex];
+	}
+
 	public void SetTarget(GameObject target) {
 		this.target = target;
 		UpdatePosition();

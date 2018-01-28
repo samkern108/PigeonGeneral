@@ -24,6 +24,7 @@ public class BirdSpawner : MonoBehaviour {
 
 	void Start() {
 		ResetSelf ();
+		highlighter.SetPlayer(playerIndex);
 	}
 
 	private void ResetSelf() {
