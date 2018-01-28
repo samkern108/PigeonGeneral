@@ -13,6 +13,8 @@ public class BirdSpawner : MonoBehaviour {
 
 	public int playerIndex;
 
+	private bool hasSentValidMessage = false;
+
 	public enum SelectionStage
 	{
 		Action, Dir, Unit
@@ -89,6 +91,7 @@ public class BirdSpawner : MonoBehaviour {
 		if (changed) {
 			GameObject target = Player.livingBirds[playerIndex][targetIndex].gameObject;
 			highlighter.SetTarget(target);
+			hasSentValidMessage = true;
 		}
 	}
 
@@ -111,7 +114,9 @@ public class BirdSpawner : MonoBehaviour {
 	public void SpawnBird() {
 		GameObject flyingBird = Instantiate (birdPrefab);
 
-		targetIndex = Random.Range (0, Player.livingBirds [playerIndex].Count);
+		if (!hasSentValidMessage || targetIndex < Player.livingBirds[playerIndex].Count) {
+			targetIndex = Random.Range (0, Player.livingBirds [playerIndex].Count);
+		}
 		GameObject target = Player.livingBirds[playerIndex][targetIndex].gameObject;
 
 		GameObject launchPoint = new GameObject();

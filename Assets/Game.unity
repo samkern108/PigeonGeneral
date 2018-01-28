@@ -263,15 +263,6 @@ Prefab:
       propertyPath: m_Pivot.y
       value: 0.5
       objectReference: {fileID: 0}
-    - target: {fileID: 1820618468104914, guid: d357a3a4c30394159a345ec438828a4e, type: 2}
-      propertyPath: m_Name
-      value: MessageCreator
-      objectReference: {fileID: 0}
-    - target: {fileID: 114498026714572314, guid: d357a3a4c30394159a345ec438828a4e,
-        type: 2}
-      propertyPath: playerIndex
-      value: 0
-      objectReference: {fileID: 0}
     - target: {fileID: 114498026714572314, guid: d357a3a4c30394159a345ec438828a4e,
         type: 2}
       propertyPath: highlighter
@@ -458,7 +449,7 @@ Prefab:
     - target: {fileID: 224602259408634436, guid: d357a3a4c30394159a345ec438828a4e,
         type: 2}
       propertyPath: m_SizeDelta.y
-      value: 1.1999817
+      value: 1.2
       objectReference: {fileID: 0}
     - target: {fileID: 224602259408634436, guid: d357a3a4c30394159a345ec438828a4e,
         type: 2}
