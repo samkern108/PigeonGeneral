@@ -22,6 +22,32 @@ public class Animate : MonoBehaviour {
 		tagCounter++;
 	}
 
+	// POSITION
+
+	public void AnimateToPosition(Vector3 start, Vector3 finish, float t, RepeatMode mode) {
+		Timing.RunCoroutine (C_AnimateToPosition(start, finish, t, mode), tag);
+	}
+
+	private IEnumerator<float> C_AnimateToPosition (Vector3 start, Vector3 finish, float duration, RepeatMode mode) {
+		float startTime = Time.time;
+		float timer = 0;
+		while(timer <= duration) {
+			timer = Time.time - startTime;
+			transform.position = Vector3.Lerp (start, finish, timer/duration);
+			yield return 0;
+		}
+		switch (mode) {
+		case RepeatMode.OnceAndBack:
+			Timing.RunCoroutine (C_AnimateToPosition(finish, start, duration, RepeatMode.Once), tag);
+			break;
+		case RepeatMode.PingPong:
+			Timing.RunCoroutine (C_AnimateToPosition(finish, start, duration, RepeatMode.PingPong), tag);
+			break;
+		default:
+			break;
+		}
+	}
+
 	// SIZE
 
 	public void AnimateToSize(Vector2 start, Vector2 finish, float t, RepeatMode mode) {

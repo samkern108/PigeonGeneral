@@ -31,10 +31,11 @@ public class Colors {
 public class UnitModel : MonoBehaviour {
 
 	public SpriteRenderer frame;
+	public SpriteRenderer pigeon;
 
 	public void Init(int playerIndex, int pigeonIndex) {
-		SpriteRenderer sr = gameObject.GetComponent<SpriteRenderer>();
-		sr.sprite = ResourceManager.self.GetPigeonSprite(playerIndex, pigeonIndex);
+		pigeon = gameObject.GetComponent<SpriteRenderer>();
+		pigeon.sprite = ResourceManager.self.GetPigeonSprite (playerIndex, PigeonPose.Idle);
 
 		frame.color = Colors.darkColors[playerIndex];
 	}

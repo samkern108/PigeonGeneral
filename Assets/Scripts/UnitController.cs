@@ -11,11 +11,14 @@ public class UnitController : MonoBehaviour {
 	private Message activeMessage;
 	private Queue<Message> messageQueue;
 
+	private Animate animate;
+
 	public void Init(int playerIndex, int pigeonIndex) {
 		this.playerIndex = playerIndex;
 		this.pigeonIndex = pigeonIndex;
 
 		model.Init(playerIndex, pigeonIndex);
+		animate = GetComponentInChildren<Animate>();
 	}
 
 	public void SubmitMessage(Message msg) {
@@ -54,15 +57,29 @@ public class UnitController : MonoBehaviour {
 		}
 	}
 
+	// So the invoke call can use it :|
+	private Vector2Int endPosition;
 	private void Move(Vector2Int start, Vector2Int end) {
 		if (Board.IsValidCellPosition(end)) {
 			if (!Board.self.HasObjectAt(end)) {
 				Board.self.RemoveObject(this.gameObject);
-				Board.self.AddObjectAt(this.gameObject, end);
 
-				transform.position = Board.GetCellCenterWorld(end);
+				Vector3 newPosition = Board.GetCellCenterWorld (end);
+				animate.AnimateToPosition (transform.position, newPosition, .3f, Animate.RepeatMode.Once);
+				// TODO(samkern): Simple shader to animate this to a flat white? :)
+				//animate.AnimateToColor (model.pigeon.color, Color.red, .2f, Animate.RepeatMode.OnceAndBack);
+				model.pigeon.sprite = ResourceManager.self.GetPigeonSprite (playerIndex, PigeonPose.Move);
+
+				endPosition = end;
+				Invoke ("StopMoving", .3f);
 			}
 		}
+	}
+
+	// I do this to give some time for the bird to animate into a new position. Also i frames feel cool.
+	private void StopMoving() {
+		Board.self.AddObjectAt(this.gameObject, endPosition);
+		model.pigeon.sprite = ResourceManager.self.GetPigeonSprite (playerIndex, PigeonPose.Idle);
 	}
 
 	private void Shoot(Vector2Int source, Vector2Int target) {
@@ -79,8 +96,15 @@ public class UnitController : MonoBehaviour {
 				GameObject.DestroyImmediate (obj);
 			}
 
+			animate.AnimateToRotation (Quaternion.identity, Quaternion.Euler(0f, 0f, -30), .2f, Animate.RepeatMode.OnceAndBack);
+			model.pigeon.sprite = ResourceManager.self.GetPigeonSprite(playerIndex, PigeonPose.Shoot);
+			Invoke ("StopShoot", .5f);
 			spawnShotVfx(source, target);
 		}
+	}
+
+	private void StopShoot() {
+		model.pigeon.sprite = ResourceManager.self.GetPigeonSprite(playerIndex, PigeonPose.Idle);
 	}
 
 	private void spawnShotVfx(Vector2Int source, Vector2Int target) {
