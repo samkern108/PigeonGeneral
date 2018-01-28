@@ -114,16 +114,19 @@ public class BirdSpawner : MonoBehaviour {
 	public void SpawnBird() {
 		GameObject flyingBird = Instantiate (birdPrefab);
 
-		if (!hasSentValidMessage || targetIndex < Player.livingBirds[playerIndex].Count) {
+		if (!hasSentValidMessage || targetIndex >= Player.livingBirds[playerIndex].Count) {
 			targetIndex = Random.Range (0, Player.livingBirds [playerIndex].Count);
 		}
-		GameObject target = Player.livingBirds[playerIndex][targetIndex].gameObject;
 
-		GameObject launchPoint = new GameObject();
-		launchPoint.name = "Launch";
-		launchPoint.transform.position = Board.self ? Board.GetRandomPointOnBorder() : new Vector3(0f, -5f, 0.5f);
+		if (Player.livingBirds[playerIndex].Count > 0) {
+			GameObject target = Player.livingBirds[playerIndex][targetIndex].gameObject;
 
-		flyingBird.GetComponent <FlyingBird>().Initialize(target, launchPoint, message);
+			GameObject launchPoint = new GameObject();
+			launchPoint.name = "Launch";
+			launchPoint.transform.position = Board.self ? Board.GetRandomPointOnBorder() : new Vector3(0f, -5f, 0.5f);
+
+			flyingBird.GetComponent <FlyingBird>().Initialize(target, launchPoint, message);
+		}
 
 		ResetSelf ();
 	}

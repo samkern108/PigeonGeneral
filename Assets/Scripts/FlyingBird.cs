@@ -54,6 +54,9 @@ public class FlyingBird : MonoBehaviour {
 				GameObject.DestroyImmediate(this.gameObject);
 			}
 		}
+		else {
+			GameObject.DestroyImmediate(this.gameObject);			
+		}
 	}
 
 	private void SetMessageIcons() {
