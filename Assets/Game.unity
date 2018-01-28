@@ -166,7 +166,39 @@ Prefab:
     - {fileID: 114325684931872578, guid: 4e7d375e28fb6fd4e99e0304a881adaa, type: 2}
   m_ParentPrefab: {fileID: 100100000, guid: 4e7d375e28fb6fd4e99e0304a881adaa, type: 2}
   m_IsPrefabParent: 0
---- !u!1001 &165273255
+--- !u!1 &255554859
+GameObject:
+  m_ObjectHideFlags: 0
+  m_PrefabParentObject: {fileID: 0}
+  m_PrefabInternal: {fileID: 0}
+  serializedVersion: 5
+  m_Component:
+  - component: {fileID: 255554860}
+  m_Layer: 0
+  m_Name: Highlights
+  m_TagString: Untagged
+  m_Icon: {fileID: 0}
+  m_NavMeshLayer: 0
+  m_StaticEditorFlags: 0
+  m_IsActive: 1
+--- !u!4 &255554860
+Transform:
+  m_ObjectHideFlags: 0
+  m_PrefabParentObject: {fileID: 0}
+  m_PrefabInternal: {fileID: 0}
+  m_GameObject: {fileID: 255554859}
+  m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
+  m_LocalPosition: {x: 0, y: 0, z: 0}
+  m_LocalScale: {x: 1, y: 1, z: 1}
+  m_Children:
+  - {fileID: 1466765944}
+  - {fileID: 1778609448}
+  - {fileID: 1708924500}
+  - {fileID: 2140463939}
+  m_Father: {fileID: 0}
+  m_RootOrder: 10
+  m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
+--- !u!1001 &293374280
 Prefab:
   m_ObjectHideFlags: 0
   serializedVersion: 2
@@ -268,41 +300,14 @@ Prefab:
       propertyPath: highlighter
       value: 
       objectReference: {fileID: 1466765945}
+    - target: {fileID: 114309986079718458, guid: d357a3a4c30394159a345ec438828a4e,
+        type: 2}
+      propertyPath: wasdUnit
+      value: 
+      objectReference: {fileID: 0}
     m_RemovedComponents: []
   m_ParentPrefab: {fileID: 100100000, guid: d357a3a4c30394159a345ec438828a4e, type: 2}
   m_IsPrefabParent: 0
---- !u!1 &255554859
-GameObject:
-  m_ObjectHideFlags: 0
-  m_PrefabParentObject: {fileID: 0}
-  m_PrefabInternal: {fileID: 0}
-  serializedVersion: 5
-  m_Component:
-  - component: {fileID: 255554860}
-  m_Layer: 0
-  m_Name: Highlights
-  m_TagString: Untagged
-  m_Icon: {fileID: 0}
-  m_NavMeshLayer: 0
-  m_StaticEditorFlags: 0
-  m_IsActive: 1
---- !u!4 &255554860
-Transform:
-  m_ObjectHideFlags: 0
-  m_PrefabParentObject: {fileID: 0}
-  m_PrefabInternal: {fileID: 0}
-  m_GameObject: {fileID: 255554859}
-  m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
-  m_LocalPosition: {x: 0, y: 0, z: 0}
-  m_LocalScale: {x: 1, y: 1, z: 1}
-  m_Children:
-  - {fileID: 1466765944}
-  - {fileID: 1778609448}
-  - {fileID: 1708924500}
-  - {fileID: 2140463939}
-  m_Father: {fileID: 0}
-  m_RootOrder: 10
-  m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
 --- !u!1001 &320106755
 Prefab:
   m_ObjectHideFlags: 0
@@ -349,12 +354,12 @@ Prefab:
 RectTransform:
   m_PrefabParentObject: {fileID: 224602259408634436, guid: d357a3a4c30394159a345ec438828a4e,
     type: 2}
-  m_PrefabInternal: {fileID: 165273255}
+  m_PrefabInternal: {fileID: 293374280}
 --- !u!114 &356457769 stripped
 MonoBehaviour:
   m_PrefabParentObject: {fileID: 114498026714572314, guid: d357a3a4c30394159a345ec438828a4e,
     type: 2}
-  m_PrefabInternal: {fileID: 165273255}
+  m_PrefabInternal: {fileID: 293374280}
   m_Script: {fileID: 11500000, guid: 618dcb2750757412392f38c8851f0bcd, type: 3}
 --- !u!1 &559166043
 GameObject:
@@ -495,8 +500,7 @@ Prefab:
       propertyPath: highlighter
       value: 
       objectReference: {fileID: 2140463940}
-    - target: {fileID: 224529022794024482, guid: d357a3a4c30394159a345ec438828a4e,
-        type: 2}
+    - target: {fileID: 0}
       propertyPath: m_AnchoredPosition.y
       value: 0.7035866
       objectReference: {fileID: 0}
@@ -1037,8 +1041,7 @@ Prefab:
       propertyPath: highlighter
       value: 
       objectReference: {fileID: 1708924501}
-    - target: {fileID: 224529022794024482, guid: d357a3a4c30394159a345ec438828a4e,
-        type: 2}
+    - target: {fileID: 0}
       propertyPath: m_AnchoredPosition.y
       value: 0.7035866
       objectReference: {fileID: 0}
@@ -1167,8 +1170,7 @@ Prefab:
       propertyPath: playerIndex
       value: 1
       objectReference: {fileID: 0}
-    - target: {fileID: 224529022794024482, guid: d357a3a4c30394159a345ec438828a4e,
-        type: 2}
+    - target: {fileID: 0}
       propertyPath: m_AnchoredPosition.y
       value: 0.7035866
       objectReference: {fileID: 0}

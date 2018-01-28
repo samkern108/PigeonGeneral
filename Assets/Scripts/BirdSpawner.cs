@@ -15,7 +15,7 @@ public class BirdSpawner : MonoBehaviour {
 
 	public enum SelectionStage
 	{
-		Action, Dir, Unit
+		Action, Dir
 	};
 
 	public SelectionStage stage = SelectionStage.Action;
@@ -79,10 +79,6 @@ public class BirdSpawner : MonoBehaviour {
 		case SelectionStage.Dir:
 			SelectDir ();
 			break;
-		case SelectionStage.Unit:
-			SelectUnit ();
-			ConfirmSend ();
-			break;
 		}
 	}
 
@@ -91,12 +87,24 @@ public class BirdSpawner : MonoBehaviour {
 	}
 
 	private void SelectAction() {
-		if (Input.GetKeyDown (GetKey(Message.Dir.down))) {
-			UpdateMessageAction(Message.Action.move);
+		
+		// Select Action
+		if (Input.GetKeyDown (GetKey (Message.Dir.down))) {
+			UpdateMessageAction (Message.Action.move);
+		} else if (Input.GetKeyDown (GetKey (Message.Dir.up))) {
+			UpdateMessageAction (Message.Action.shoot);
+		} 
+
+		// Select Unit
+		else {
+			SelectUnit ();
 		}
-		else if (Input.GetKeyDown (GetKey(Message.Dir.up))) {
-			UpdateMessageAction(Message.Action.shoot);
+		/*else if (Input.GetKeyDown (Message.Dir.left)) {
+			SelectUnit ();
 		}
+		else if (Input.GetKeyDown (Message.Dir.right)) {
+			SelectUnit ();
+		}*/
 	}
 
 	private void SelectDir() {
@@ -129,12 +137,6 @@ public class BirdSpawner : MonoBehaviour {
 		}
 	}
 
-	private void ConfirmSend() {
-		if (Input.GetKeyDown (GetKey (Message.Dir.up))) {
-			SpawnBird ();
-		}
-	}
-
 	private void UpdateMessageAction(Message.Action action) {
 		message.action = action;
 		stage = SelectionStage.Dir;
@@ -145,10 +147,8 @@ public class BirdSpawner : MonoBehaviour {
 
 	private void UpdateMessageDir(Message.Dir dir) {
 		message.dir = dir;
-		stage = SelectionStage.Unit;
-
 		UI.SetDirSelectionChoice (dir);
-		UI.SetSelectionStage (stage);
+		SpawnBird ();
 	}
 
 	public void SpawnBird() {

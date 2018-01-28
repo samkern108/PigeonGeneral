@@ -78,9 +78,9 @@ public class UnitController : MonoBehaviour {
 	// So the invoke call can use it :|
 	private Vector2Int endPosition;
 	private void Move(Vector2Int start, Vector2Int end) {
-		if (Board.IsValidCellPosition(end)) {
-			if (!Board.self.HasObjectAt(end)) {
-				Board.self.RemoveObject(this.gameObject);
+		if (Board.IsValidCellPosition (end)) {
+			if (!Board.self.HasObjectAt (end)) {
+				Board.self.RemoveObject (this.gameObject);
 
 				Vector3 newPosition = Board.GetCellCenterWorld (end);
 				animate.AnimateToPosition (transform.position, newPosition, .3f, Animate.RepeatMode.Once);
@@ -90,8 +90,17 @@ public class UnitController : MonoBehaviour {
 
 				endPosition = end;
 				Invoke ("StopMoving", .3f);
+			} else {
+				InvalidMove ();
 			}
+		} else {
+			InvalidMove ();
 		}
+	}
+
+	private void InvalidMove() {
+		animate.AnimateToColor (model.pigeon.color, Color.red, .2f, Animate.RepeatMode.OnceAndBack);
+		//model.pigeon.sprite = ResourceManager.self.GetPigeonSprite (playerIndex, PigeonPose.Move);
 	}
 
 	// I do this to give some time for the bird to animate into a new position. Also i frames feel cool.
