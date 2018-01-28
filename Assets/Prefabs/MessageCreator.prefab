@@ -161,7 +161,7 @@ GameObject:
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
-  m_IsActive: 1
+  m_IsActive: 0
 --- !u!1 &1609298676839488
 GameObject:
   m_ObjectHideFlags: 1
@@ -209,6 +209,7 @@ GameObject:
   - component: {fileID: 114466369179583582}
   - component: {fileID: 114701553579697368}
   - component: {fileID: 114957335970600492}
+  - component: {fileID: 114495890168434264}
   m_Layer: 5
   m_Name: MessageCreator
   m_TagString: Untagged
@@ -370,7 +371,7 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   m_Material: {fileID: 0}
-  m_Color: {r: 1, g: 1, b: 1, a: 1}
+  m_Color: {r: 0.5921569, g: 0.8392157, b: 0.26666668, a: 1}
   m_RaycastTarget: 1
   m_OnCullStateChanged:
     m_PersistentCalls:
@@ -437,7 +438,7 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   m_Material: {fileID: 0}
-  m_Color: {r: 1, g: 1, b: 1, a: 1}
+  m_Color: {r: 0.5921569, g: 0.8392157, b: 0.26666668, a: 1}
   m_RaycastTarget: 1
   m_OnCullStateChanged:
     m_PersistentCalls:
@@ -452,6 +453,17 @@ MonoBehaviour:
   m_FillAmount: 1
   m_FillClockwise: 1
   m_FillOrigin: 0
+--- !u!114 &114495890168434264
+MonoBehaviour:
+  m_ObjectHideFlags: 1
+  m_PrefabParentObject: {fileID: 0}
+  m_PrefabInternal: {fileID: 100100000}
+  m_GameObject: {fileID: 1820618468104914}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: c92cab0aa3d604ef7825dbac2e0d4526, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
 --- !u!114 &114587895588417664
 MonoBehaviour:
   m_ObjectHideFlags: 1
@@ -491,7 +503,7 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   m_Material: {fileID: 0}
-  m_Color: {r: 1, g: 0, b: 0, a: 1}
+  m_Color: {r: 0.37254903, g: 0.50980395, b: 0.19215687, a: 1}
   m_RaycastTarget: 1
   m_OnCullStateChanged:
     m_PersistentCalls:
@@ -571,6 +583,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 618dcb2750757412392f38c8851f0bcd, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
+  targetIndex: 0
   birdPrefab: {fileID: 1406092279783666, guid: f9247417e87114a63bd021bf4c97075d, type: 2}
   highlighter: {fileID: 0}
   spawnPoint: {fileID: 224011251400252074}

@@ -34,16 +34,16 @@ public class MessageUI : MonoBehaviour {
 
 	public void Reset() {
 		int firstStage = 0;
-		SetSelectionStage((BirdSpawner.SelectionStage)firstStage);
+		SetSpawnStage((SpawnStage)firstStage);
 	}
 
-	public void SetSelectionStage(BirdSpawner.SelectionStage stage) {
+	public void SetSpawnStage(SpawnStage stage) {
 		switch (stage) {
-		case BirdSpawner.SelectionStage.Action:
+		case SpawnStage.Action:
 			wasdDir.SetActive (false);
 			wasdAction.SetActive (true);
 			break;
-		case BirdSpawner.SelectionStage.Dir:
+		case SpawnStage.Dir:
 			wasdDir.SetActive (true);
 			wasdAction.SetActive (false);
 			break;
