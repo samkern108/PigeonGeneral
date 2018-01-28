@@ -4,6 +4,8 @@ using UnityEngine;
 
 public class UnitController : MonoBehaviour {
 
+	public delegate void OnDeath(UnitController unit);
+
 	public int playerIndex, pigeonIndex;
 	public UnitModel model;
 	public GameObject shotVfx;
@@ -12,6 +14,7 @@ public class UnitController : MonoBehaviour {
 	private Queue<Message> messageQueue;
 
 	private Animate animate;
+	private OnDeath onDeath;
 
 	public void Init(int playerIndex, int pigeonIndex) {
 		this.playerIndex = playerIndex;
@@ -27,7 +30,15 @@ public class UnitController : MonoBehaviour {
 		messageQueue.Enqueue(msg);
 	}
 
-	private void Start() {
+	public void RegisterOnDeath(OnDeath callback) {
+		onDeath = callback;
+	}
+
+	public void Die() {
+		onDeath(this);
+	}
+
+	private void Awake() {
 		messageQueue = new Queue<Message>();
 	}
 
@@ -90,6 +101,7 @@ public class UnitController : MonoBehaviour {
 
 				UnitController uc = obj.GetComponent<UnitController> ();
 				if (uc != null) {
+					uc.Die();
 					Player.KillBird (uc);
 				}
 
