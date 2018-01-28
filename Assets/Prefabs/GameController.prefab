@@ -54,5 +54,6 @@ MonoBehaviour:
   unitPrefab: {fileID: 1581682322869568, guid: b1babeb183c8efc49a31f2af93101af0, type: 2}
   obstaclePrefab: {fileID: 1567645309931198, guid: 7b33c60e2bc839d4d838b0d55fe0252c,
     type: 2}
+  resourcePrefab: {fileID: 114549304028346588, guid: 257fb83b8e72f443db91cf8db5fde988,
+    type: 2}
   board: {fileID: 0}
-  resourceManager: {fileID: 0}
