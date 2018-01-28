@@ -8,9 +8,9 @@ using UnityEngine;
 public class Colors {
 	public static Color[] lightColors = new Color[] {
 		new Color(151f / 255f, 214f / 255f, 68f / 255f, 1f),
-		new Color(212f / 255f, 219f / 255f, 255f / 255f, 1f),
+		new Color(84f / 255f, 212f / 255f, 219f / 255f, 1f),
 		new Color(227f / 255f, 69f / 255f, 107f / 255f, 1f),
-		new Color(170f / 255f, 53f / 255f, 206f / 255f, 1f),
+		new Color(182f / 255f, 93f / 255f, 221f / 255f, 1f),
 	};
 
 	public static Color[] midColors = new Color[] {
