@@ -10,6 +10,7 @@ public class PlayMusic : MonoBehaviour {
 	// Use this for initialization
 	void Start () {
 		source.clip = clip;
+		source.loop = true;
 		source.Play();
 	}
 }

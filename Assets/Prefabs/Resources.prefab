@@ -61,20 +61,29 @@ MonoBehaviour:
   pigeons0:
   - {fileID: 21300000, guid: d7be8301044e2374595cf4b17e018039, type: 3}
   - {fileID: 21300002, guid: d7be8301044e2374595cf4b17e018039, type: 3}
-  - {fileID: 21300020, guid: d7be8301044e2374595cf4b17e018039, type: 3}
-  - {fileID: 21300022, guid: d7be8301044e2374595cf4b17e018039, type: 3}
+  - {fileID: 21300006, guid: d7be8301044e2374595cf4b17e018039, type: 3}
+  - {fileID: 21300008, guid: d7be8301044e2374595cf4b17e018039, type: 3}
   pigeons1:
   - {fileID: 21300000, guid: e3c610ce4c71dc943b5881fe2a13b6eb, type: 3}
   - {fileID: 21300002, guid: e3c610ce4c71dc943b5881fe2a13b6eb, type: 3}
-  - {fileID: 21300020, guid: e3c610ce4c71dc943b5881fe2a13b6eb, type: 3}
-  - {fileID: 21300022, guid: e3c610ce4c71dc943b5881fe2a13b6eb, type: 3}
+  - {fileID: 21300006, guid: e3c610ce4c71dc943b5881fe2a13b6eb, type: 3}
+  - {fileID: 21300008, guid: e3c610ce4c71dc943b5881fe2a13b6eb, type: 3}
   pigeons2:
   - {fileID: 21300000, guid: 87ea8c32859b25044a838c456a75aed7, type: 3}
   - {fileID: 21300002, guid: 87ea8c32859b25044a838c456a75aed7, type: 3}
-  - {fileID: 21300020, guid: 87ea8c32859b25044a838c456a75aed7, type: 3}
-  - {fileID: 21300022, guid: 87ea8c32859b25044a838c456a75aed7, type: 3}
+  - {fileID: 21300006, guid: 87ea8c32859b25044a838c456a75aed7, type: 3}
+  - {fileID: 21300008, guid: 87ea8c32859b25044a838c456a75aed7, type: 3}
   pigeons3:
-  - {fileID: 21300000, guid: 416fcda11826d064095ccadcb36cdbc1, type: 3}
-  - {fileID: 21300002, guid: 416fcda11826d064095ccadcb36cdbc1, type: 3}
-  - {fileID: 21300020, guid: 416fcda11826d064095ccadcb36cdbc1, type: 3}
-  - {fileID: 21300022, guid: 416fcda11826d064095ccadcb36cdbc1, type: 3}
+  - {fileID: 21300000, guid: 87ea8c32859b25044a838c456a75aed7, type: 3}
+  - {fileID: 21300002, guid: 87ea8c32859b25044a838c456a75aed7, type: 3}
+  - {fileID: 21300006, guid: 87ea8c32859b25044a838c456a75aed7, type: 3}
+  - {fileID: 21300008, guid: 87ea8c32859b25044a838c456a75aed7, type: 3}
+  sfxShot: {fileID: 8300000, guid: 21dcbbe9c09a9f84aaad3074571798fe, type: 3}
+  sfxWingFlap: {fileID: 8300000, guid: 14dcfd00f543e714b81c03d50cb95af3, type: 3}
+  sfxBirdCalls:
+  - {fileID: 8300000, guid: a8ee755adf982f44dbf4197021c5a82f, type: 3}
+  - {fileID: 8300000, guid: 61f6fb142817bca45877f25c8aa14d4f, type: 3}
+  - {fileID: 8300000, guid: 0c7080c3dfabd594fa908c3a7ea04e67, type: 3}
+  - {fileID: 8300000, guid: a71b76697b2e8da45938523fa4f04525, type: 3}
+  - {fileID: 8300000, guid: 7ca24164a2b3cc241ae87caf3d51a054, type: 3}
+  - {fileID: 8300000, guid: 895d560f357ce4e499d7cdf1550cc4d4, type: 3}
