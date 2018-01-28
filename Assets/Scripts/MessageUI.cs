@@ -28,6 +28,10 @@ public class MessageUI : MonoBehaviour {
 
 		Image img = this.gameObject.GetComponent<Image>();
 		img.color = Colors.midColors[spawner.playerIndex];
+
+		wasdDir.GetComponent<Image> ().color = Colors.lightColors[spawner.playerIndex];
+		wasdAction.GetComponent<Image> ().color = Colors.lightColors[spawner.playerIndex];
+		dirIcon.color = Colors.lightColors[spawner.playerIndex];
 	}
 
 	public void Reset() {
