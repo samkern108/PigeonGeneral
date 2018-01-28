@@ -15,7 +15,10 @@ public class IntroController : MonoBehaviour {
 	public Text enterText;
 
 	private Vector2Int[] spawnPositions = new Vector2Int[] {
-
+		new Vector2Int(1, 6),
+		new Vector2Int(6, 6),
+		new Vector2Int(6, 1),
+		new Vector2Int(1, 1),
 	};
 
 	private void Awake() {
@@ -32,19 +35,26 @@ public class IntroController : MonoBehaviour {
 		Camera.main.transform.position = Board.GetBoardCenterWorld() - 10f * Vector3.forward;
 
 		// obstacles
-		for (int i = 0; i < 10; ++i) {
-			while (true) {
-				Vector2Int cellPosition = new Vector2Int(Random.Range(0, Board.DIMS.x), Random.Range(0, Board.DIMS.y));
+		for (int i = 0; i < Board.DIMS.x; ++i) {
+			Vector2Int cellPosition = new Vector2Int(i, Board.DIMS.y / 2 - i % 2);
 
-				if (!Board.self.HasObjectAt(cellPosition)) {
-					Vector3 worldPosition = Board.GetCellCenterWorld(cellPosition);
-					
-					GameObject obj = GameObject.Instantiate(obstaclePrefab, worldPosition, Quaternion.identity);
+			if (!Board.self.HasObjectAt(cellPosition)) {
+				Vector3 worldPosition = Board.GetCellCenterWorld(cellPosition);
+				
+				GameObject obj = GameObject.Instantiate(obstaclePrefab, worldPosition, Quaternion.identity);
 
-					Board.self.AddObjectAt(obj, cellPosition);	
+				Board.self.AddObjectAt(obj, cellPosition);			
+			}
+		}
+		for (int i = 0; i < Board.DIMS.y; ++i) {
+			Vector2Int cellPosition = new Vector2Int(Board.DIMS.x / 2 - i % 2, i);
 
-					break;				
-				}
+			if (!Board.self.HasObjectAt(cellPosition)) {
+				Vector3 worldPosition = Board.GetCellCenterWorld(cellPosition);
+				
+				GameObject obj = GameObject.Instantiate(obstaclePrefab, worldPosition, Quaternion.identity);
+
+				Board.self.AddObjectAt(obj, cellPosition);
 			}
 		}
 	}
@@ -69,7 +79,7 @@ public class IntroController : MonoBehaviour {
 						Player.livingBirds [playerIndex] = new List<UnitController> ();
 
 						while (true) {
-							Vector2Int cellPosition = new Vector2Int(Random.Range(0, Board.DIMS.x), Random.Range(0, Board.DIMS.y));
+							Vector2Int cellPosition = spawnPositions[playerIndex];
 
 							if (!Board.self.HasObjectAt(cellPosition))
 							{
