@@ -844,6 +844,11 @@ Prefab:
   m_Modification:
     m_TransformParent: {fileID: 0}
     m_Modifications:
+    - target: {fileID: 114862571292776680, guid: 3e94ba348609b47798cf953cad3af524,
+        type: 2}
+      propertyPath: aiSpawners.Array.size
+      value: 3
+      objectReference: {fileID: 0}
     - target: {fileID: 4978996001462990, guid: 3e94ba348609b47798cf953cad3af524, type: 2}
       propertyPath: m_LocalPosition.x
       value: 267.77957
@@ -894,6 +899,21 @@ Prefab:
     - target: {fileID: 114862571292776680, guid: 3e94ba348609b47798cf953cad3af524,
         type: 2}
       propertyPath: birdSpawners.Array.data[3]
+      value: 
+      objectReference: {fileID: 1763353717}
+    - target: {fileID: 114862571292776680, guid: 3e94ba348609b47798cf953cad3af524,
+        type: 2}
+      propertyPath: aiSpawners.Array.data[0]
+      value: 
+      objectReference: {fileID: 1169950394}
+    - target: {fileID: 114862571292776680, guid: 3e94ba348609b47798cf953cad3af524,
+        type: 2}
+      propertyPath: aiSpawners.Array.data[1]
+      value: 
+      objectReference: {fileID: 1381823262}
+    - target: {fileID: 114862571292776680, guid: 3e94ba348609b47798cf953cad3af524,
+        type: 2}
+      propertyPath: aiSpawners.Array.data[2]
       value: 
       objectReference: {fileID: 1763353717}
     m_RemovedComponents: []
