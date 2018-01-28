@@ -3,10 +3,15 @@ using System.Collections.Generic;
 using UnityEngine;
 using UnityEngine.UI;
 
+public enum SpawnStage
+{
+	Action, Dir
+};
+
 public class BirdSpawner : MonoBehaviour {
 
-	private Message message;
-	private int targetIndex;
+	public Message message;
+	public int targetIndex;
 
 	public GameObject birdPrefab;
 	public UnitHighlighter highlighter;
@@ -15,17 +20,14 @@ public class BirdSpawner : MonoBehaviour {
 	private FlyingBirdUI stagedBird;
 
 	public int playerIndex;
+	//public static int currentPlayerIndex = 0;
 
-	public enum SelectionStage
-	{
-		Action, Dir
-	};
-
-	public SelectionStage stage = SelectionStage.Action;
+	public SpawnStage stage = SpawnStage.Action;
 
 	public MessageUI UI { get { return MessageUI.GetUIForPlayer(playerIndex); } }	
 
 	void Start() {
+		//playerIndex = currentPlayerIndex++;
 		highlighter.SetPlayerIndex (playerIndex);
 		ResetSelf ();
 
@@ -72,7 +74,7 @@ public class BirdSpawner : MonoBehaviour {
 		}
 	}
 
-	private void ResetSelf() {
+	public void ResetSelf() {
 		message = new Message ();
 		UI.Reset ();
 
@@ -81,78 +83,18 @@ public class BirdSpawner : MonoBehaviour {
 		stagedBird.transform.position = spawnPoint.position;
 
 		int initialStage = 0;
-		stage = (SelectionStage)initialStage;
+		stage = (SpawnStage)initialStage;
 	}
 
-	void Update() {
-		switch (stage) {
-		case SelectionStage.Action:
-			SelectAction ();
-			break;
-		case SelectionStage.Dir:
-			SelectDir ();
-			break;
-		}
-	}
-
-	private KeyCode GetKey(Message.Dir dir) {
-		return Player.Get(playerIndex).GetKey(dir);
-	}
-
-	private void SelectAction() {
-		
-		// Select Action
-		if (Input.GetKeyDown (GetKey (Message.Dir.down))) {
-			UpdateMessageAction (Message.Action.move);
-		} else if (Input.GetKeyDown (GetKey (Message.Dir.up))) {
-			UpdateMessageAction (Message.Action.shoot);
-		} 
-
-		// Select Unit
-		else {
-			SelectUnit ();
-		}
-	}
-
-	private void SelectDir() {
-		if (Input.GetKeyDown (GetKey(Message.Dir.up))) {
-			UpdateMessageDir(Message.Dir.up);
-		} else if (Input.GetKeyDown (GetKey(Message.Dir.down))) {
-			UpdateMessageDir(Message.Dir.down);
-		} else if (Input.GetKeyDown (GetKey(Message.Dir.left))) {
-			UpdateMessageDir(Message.Dir.left);
-		} else if (Input.GetKeyDown (GetKey(Message.Dir.right))) {
-			UpdateMessageDir(Message.Dir.right);
-		}
-	}
-		
-	private void SelectUnit() {
-		int targetLength = Player.livingBirds[playerIndex].Count;
-
-		bool changed = false;
-		if (Input.GetKeyDown (GetKey(Message.Dir.left))) {
-			targetIndex = (targetIndex + targetLength - 1) % targetLength;
-			changed = true;
-		} else if (Input.GetKeyDown (GetKey(Message.Dir.right))) {
-			targetIndex = (targetIndex + targetLength + 1) % targetLength;
-			changed = true;
-		}
-
-		if (changed) {
-			GameObject target = Player.livingBirds[playerIndex][targetIndex].gameObject;
-			highlighter.SetTarget(target);
-		}
-	}
-
-	private void UpdateMessageAction(Message.Action action) {
+	public void UpdateMessageAction(Message.Action action) {
 		message.action = action;
-		stage = SelectionStage.Dir;
+		stage = SpawnStage.Dir;
 
 		stagedBird.SetActionSelectionChoice (action);
-		UI.SetSelectionStage (stage);
+		UI.SetSpawnStage (stage);
 	}
 
-	private void UpdateMessageDir(Message.Dir dir) {
+	public void UpdateMessageDir(Message.Dir dir) {
 		message.dir = dir;
 		stagedBird.SetDirSelectionChoice (dir);
 		SpawnBird ();

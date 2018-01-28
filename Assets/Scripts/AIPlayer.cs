@@ -11,6 +11,9 @@ public class AIPlayer : MonoBehaviour {
 	private BirdSpawner spawner;
 
 	void Start() {
+		if(GetComponent<PlayerController>().isActiveAndEnabled) {
+			this.enabled = false;
+		}
 		spawner = GetComponent<BirdSpawner> ();
 		SetLaunchInterval ();
 	}

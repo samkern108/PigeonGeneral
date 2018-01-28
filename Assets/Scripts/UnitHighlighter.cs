@@ -23,8 +23,8 @@ public class UnitHighlighter : MonoBehaviour {
 		GameObject.Instantiate(cursor, new Vector3(-999f, 0f, 0f), Quaternion.identity);
 		animate = GetComponentInChildren <Animate>();
 		Vector3 startSize = this.transform.localScale;
-		Vector3 endSize = new Vector3 (startSize.x * .5f, startSize.y * .5f, 1.0f);
-		animate.AnimateToSize (startSize, endSize, 1.0f, Animate.RepeatMode.PingPong);
+		Vector3 endSize = new Vector3 (startSize.x * .7f, startSize.y * .7f, 1.0f);
+		animate.AnimateToSize (startSize, endSize, .75f, Animate.RepeatMode.PingPong);
 	}
 
 	private void Update() {
