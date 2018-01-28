@@ -49,6 +49,7 @@ public class BirdSpawner : MonoBehaviour {
 		if (currentSelectedUnit == unit) {
 			// pick new random selection? closest?
 			if (Player.livingBirds[playerIndex].Count == 1) {
+				
 				Destroy(highlighter.gameObject);
 				Destroy(this);
 			}
