@@ -1,6 +1,7 @@
 ﻿using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
+using UnityEngine.UI;
 
 public class IntroController : MonoBehaviour {
 
@@ -10,6 +11,8 @@ public class IntroController : MonoBehaviour {
 	public Board board;
 
 	public BirdSpawner[] birdSpawners;
+	public PlayerController[] playerControllers;
+	public Text enterText;
 
 	private Vector2Int[] spawnPositions = new Vector2Int[] {
 
@@ -80,7 +83,9 @@ public class IntroController : MonoBehaviour {
 
 								Board.self.AddObjectAt(obj, cellPosition);
 
+								enterText.enabled = true;
 								birdSpawners[playerIndex].enabled = true;
+								playerControllers[playerIndex].enabled = true;
 
 								break;
 							}
