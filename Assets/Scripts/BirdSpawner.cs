@@ -25,7 +25,6 @@ public class BirdSpawner : MonoBehaviour {
 	void Start() {
 		highlighter.SetPlayerIndex (playerIndex);
 		ResetSelf ();
-		highlighter.SetPlayer(playerIndex);
 
 		targetIndex = 0;
 		GameObject target = Player.livingBirds[playerIndex][targetIndex].gameObject;
