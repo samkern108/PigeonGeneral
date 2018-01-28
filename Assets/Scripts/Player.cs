@@ -16,7 +16,7 @@ public class PlayerData {
 public class Player : MonoBehaviour {
 
 	static public readonly int PLAYER_COUNT = 4;
-	static public readonly int UNITS_PER_PLAYER = 4;
+	static public readonly int UNITS_PER_PLAYER = 2;
 
 	// :D
 	public static List<UnitController>[] livingBirds = new List<UnitController>[PLAYER_COUNT];
