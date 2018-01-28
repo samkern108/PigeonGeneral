@@ -141,7 +141,7 @@ MonoBehaviour:
   pigeonIndex: 0
   model: {fileID: 114310364263739604}
   shotVfx: {fileID: 1713931489383274, guid: be8fd70ee5bf14340bf0ad0f75d7f5db, type: 2}
-  featherVfx: {fileID: 1638565447964244, guid: bbb15f5da86524f1eaf2a5d6f63c7efe, type: 2}
+  featherVfx: {fileID: 1949045335370000, guid: c93215ca008464a29bda6783ce4133a8, type: 2}
 --- !u!212 &212291202847817034
 SpriteRenderer:
   m_ObjectHideFlags: 1

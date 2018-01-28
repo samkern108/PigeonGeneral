@@ -47,6 +47,7 @@ public class UnitController : MonoBehaviour {
 
 	public void Die() {
 		ResourceManager.self.PlaySound(SFX.birdCall);
+		GameObject.Instantiate(featherVfx, transform.position, Quaternion.identity);
 
 		timeSinceLastMessage = -999f;
 
@@ -120,7 +121,7 @@ public class UnitController : MonoBehaviour {
 				//animate.AnimateToColor (model.pigeon.color, Color.red, .2f, Animate.RepeatMode.OnceAndBack);
 				model.pigeon.sprite = ResourceManager.self.GetPigeonSprite (playerIndex, PigeonPose.Move);
 
-				spawnDirectedVfx(featherVfx, end, start);
+				//spawnDirectedVfx(featherVfx, end, start);
 
 				endPosition = end;
 				Invoke ("StopMoving", .3f);

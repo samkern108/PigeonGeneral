@@ -29,7 +29,9 @@ public class BirdSpawner : MonoBehaviour {
 	void Start() {
 		//playerIndex = currentPlayerIndex++;
 		highlighter.SetPlayerIndex (playerIndex);
-		ResetSelf ();
+
+		// Hacky method for ensuring staged birds are placed after board/camera are ready.
+		Invoke("ResetSelf", .01f);
 
 		targetIndex = 0;
 		GameObject target = Player.livingBirds[playerIndex][targetIndex].gameObject;
