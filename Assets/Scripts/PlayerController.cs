@@ -11,13 +11,15 @@ public class PlayerController : MonoBehaviour {
 	}
 
 	void Update() {
-		switch (spawner.stage) {
-		case SpawnStage.Action:
-			SelectAction ();
-			break;
-		case SpawnStage.Dir:
-			SelectDir ();
-			break;
+		if (Player.livingBirds[spawner.playerIndex].Count > 0) {
+			switch (spawner.stage) {
+			case SpawnStage.Action:
+				SelectAction ();
+				break;
+			case SpawnStage.Dir:
+				SelectDir ();
+				break;
+			}
 		}
 	}
 

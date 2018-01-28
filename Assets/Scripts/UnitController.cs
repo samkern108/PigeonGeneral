@@ -106,12 +106,11 @@ public class UnitController : MonoBehaviour {
 		}
 	}
 
-	// So the invoke call can use it :|
-	private Vector2Int endPosition;
 	private void Move(Vector2Int start, Vector2Int end) {
 		if (Board.IsValidCellPosition (end)) {
 			if (!Board.self.HasObjectAt (end)) {
 				Board.self.RemoveObject (this.gameObject);
+				Board.self.AddObjectAt(this.gameObject, end);
 
 				Vector3 newPosition = Board.GetCellCenterWorld (end);
 
@@ -123,7 +122,6 @@ public class UnitController : MonoBehaviour {
 
 				spawnDirectedVfx(moveVfx, start, end);
 
-				endPosition = end;
 				Invoke ("StopMoving", .3f);
 			} else {
 				InvalidMove ();
@@ -141,7 +139,6 @@ public class UnitController : MonoBehaviour {
 
 	// I do this to give some time for the bird to animate into a new position. Also i frames feel cool.
 	private void StopMoving() {
-		Board.self.AddObjectAt(this.gameObject, endPosition);
 		model.pigeon.sprite = ResourceManager.self.GetPigeonSprite (playerIndex, PigeonPose.Idle);
 
 		this.transform.position = model.transform.position;
