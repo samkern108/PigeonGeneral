@@ -6,6 +6,7 @@ public class UnitController : MonoBehaviour {
 
 	public int playerIndex, pigeonIndex;
 	public UnitModel model;
+	public GameObject shotVfx;
 
 	private Message activeMessage;
 	private Queue<Message> messageQueue;
@@ -77,7 +78,24 @@ public class UnitController : MonoBehaviour {
 
 				GameObject.DestroyImmediate (obj);
 			}
+
+			spawnShotVfx(source, target);
 		}
+	}
+
+	private void spawnShotVfx(Vector2Int source, Vector2Int target) {
+			Vector3 forward = Vector3.up;
+			Vector3 toTarget = (Board.GetCellCenterWorld(target) - transform.position).normalized;
+
+			float dot = Vector3.Dot(forward, toTarget);
+			float acos = Mathf.Acos(dot);
+			float zRot = Mathf.Rad2Deg * acos;
+
+			if (target.x > source.x) {
+				zRot *= -1f;
+			}
+
+			GameObject.Instantiate(shotVfx, transform.position, Quaternion.Euler(0f, 0f, zRot));
 	}
 	
 }
