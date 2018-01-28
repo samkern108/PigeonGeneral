@@ -10,7 +10,7 @@ public class UnitController : MonoBehaviour {
 
 	public int playerIndex, pigeonIndex;
 	public UnitModel model;
-	public GameObject shotVfx;
+	public GameObject shotVfx, featherVfx;
 
 	private Message activeMessage;
 	private Queue<Message> messageQueue;
@@ -120,6 +120,8 @@ public class UnitController : MonoBehaviour {
 				//animate.AnimateToColor (model.pigeon.color, Color.red, .2f, Animate.RepeatMode.OnceAndBack);
 				model.pigeon.sprite = ResourceManager.self.GetPigeonSprite (playerIndex, PigeonPose.Move);
 
+				spawnDirectedVfx(featherVfx, end, start);
+
 				endPosition = end;
 				Invoke ("StopMoving", .3f);
 			} else {
@@ -164,7 +166,7 @@ public class UnitController : MonoBehaviour {
 			animate.AnimateToRotation (Quaternion.identity, Quaternion.Euler(0f, 0f, -30), .2f, Animate.RepeatMode.OnceAndBack);
 			model.pigeon.sprite = ResourceManager.self.GetPigeonSprite(playerIndex, PigeonPose.Shoot);
 			Invoke ("StopShoot", .5f);
-			spawnShotVfx(source, target);
+			spawnDirectedVfx(shotVfx, source, target);
 
 			ResourceManager.self.PlaySound(SFX.shot);
 		}
@@ -174,7 +176,7 @@ public class UnitController : MonoBehaviour {
 		model.pigeon.sprite = ResourceManager.self.GetPigeonSprite(playerIndex, PigeonPose.Idle);
 	}
 
-	private void spawnShotVfx(Vector2Int source, Vector2Int target) {
+	private void spawnDirectedVfx(GameObject vfx, Vector2Int source, Vector2Int target) {
 			Vector3 forward = Vector3.up;
 			Vector3 toTarget = (Board.GetCellCenterWorld(target) - transform.position).normalized;
 
@@ -186,7 +188,7 @@ public class UnitController : MonoBehaviour {
 				zRot *= -1f;
 			}
 
-			GameObject.Instantiate(shotVfx, transform.position, Quaternion.Euler(0f, 0f, zRot));
+			GameObject.Instantiate(vfx, transform.position, Quaternion.Euler(0f, 0f, zRot));
 	}
 
 	private void ResetVisuals() {
