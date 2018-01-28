@@ -4,7 +4,7 @@ using UnityEngine;
 
 public class Timer : MonoBehaviour {
 
-	private static float birdLaunchInterval = 4.0f;
+	private static float birdLaunchInterval = 5.0f;
 	private static float timer = 0.0f;
 
 	public BirdSpawner[] birdSpawners = new BirdSpawner[4];

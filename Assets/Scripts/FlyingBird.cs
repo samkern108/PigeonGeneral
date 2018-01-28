@@ -27,7 +27,7 @@ public class FlyingBird : MonoBehaviour {
 			zRot *= -1f;
 		}
 
-		Debug.Log("dot " + dot + " acos " + acos + " zRot " + zRot);
+		//Debug.Log("dot " + dot + " acos " + acos + " zRot " + zRot);
 
 		transform.Rotate(new Vector3(0f, 0f, zRot));
 

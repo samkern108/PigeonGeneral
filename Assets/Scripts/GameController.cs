@@ -7,18 +7,12 @@ public class GameController : MonoBehaviour {
 	public GameObject unitPrefab;
 	public GameObject obstaclePrefab;
 
-	public UnitController[] unitControllers;
-
 	static public GameController self { get { return _self; } } 
 	static private GameController _self;
 
 	private void Awake() {
+
 		_self = this;
-	}
-
-	private void Start() {
-
-		unitControllers = new UnitController[Player.PLAYER_COUNT * Player.UNITS_PER_PLAYER];
 
 		Camera.main.transform.position = Board.GetBoardCenterWorld() - 10f * Vector3.forward;
 
@@ -38,24 +32,28 @@ public class GameController : MonoBehaviour {
 				}
 			}
 		}
-		
-		for (int i = 0; i < Player.PLAYER_COUNT * Player.UNITS_PER_PLAYER; ++i) {
-			while (true) {
-				Vector2Int cellPosition = new Vector2Int(Random.Range(0, Board.DIMS.x), Random.Range(0, Board.DIMS.y));
 
-				if (!Board.self.HasObjectAt(cellPosition))
-				{
-					Vector3 worldPosition = Board.GetCellCenterWorld(cellPosition);
+		for (int i = 0; i < Player.PLAYER_COUNT; ++i) {
+			Player.livingBirds [i] = new List<UnitController> ();
 
-					GameObject obj = GameObject.Instantiate(unitPrefab, worldPosition, Quaternion.identity);
-					UnitController unit = obj.GetComponent<UnitController>();
+			for (int j = 0; j < Player.UNITS_PER_PLAYER; ++j) {
+				while (true) {
+					Vector2Int cellPosition = new Vector2Int(Random.Range(0, Board.DIMS.x), Random.Range(0, Board.DIMS.y));
 
-					unit.Init(i % Player.PLAYER_COUNT, (int)Mathf.Floor(i / Player.PLAYER_COUNT));
-					unitControllers[i] = unit;
+					if (!Board.self.HasObjectAt(cellPosition))
+					{
+						Vector3 worldPosition = Board.GetCellCenterWorld(cellPosition);
 
-					Board.self.AddObjectAt(obj, cellPosition);
+						GameObject obj = GameObject.Instantiate(unitPrefab, worldPosition, Quaternion.identity);
+						UnitController unit = obj.GetComponent<UnitController>();
 
-					break;
+						unit.Init(i, j);
+						Player.livingBirds [i].Add (unit);
+
+						Board.self.AddObjectAt(obj, cellPosition);
+
+						break;
+					}
 				}
 			}
 		}
