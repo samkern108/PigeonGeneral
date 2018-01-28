@@ -44,6 +44,9 @@ TagManager:
   - name: Default
     uniqueID: 0
     locked: 0
+  - name: UnitHighlight
+    uniqueID: 2688147385
+    locked: 0
   - name: Units
     uniqueID: 2021365261
     locked: 0

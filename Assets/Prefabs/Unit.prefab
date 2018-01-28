@@ -127,6 +127,7 @@ MonoBehaviour:
   playerIndex: 0
   pigeonIndex: 0
   model: {fileID: 114310364263739604}
+  shotVfx: {fileID: 1713931489383274, guid: be8fd70ee5bf14340bf0ad0f75d7f5db, type: 2}
 --- !u!212 &212291202847817034
 SpriteRenderer:
   m_ObjectHideFlags: 1
@@ -158,8 +159,8 @@ SpriteRenderer:
   m_AutoUVMaxDistance: 0.5
   m_AutoUVMaxAngle: 89
   m_LightmapParameters: {fileID: 0}
-  m_SortingLayerID: 0
-  m_SortingLayer: 0
+  m_SortingLayerID: 2021365261
+  m_SortingLayer: 2
   m_SortingOrder: 0
   m_Sprite: {fileID: 21300000, guid: 18c4f2d7031d5412da9a1771bde43ede, type: 3}
   m_Color: {r: 1, g: 1, b: 1, a: 1}
@@ -202,10 +203,10 @@ SpriteRenderer:
   m_AutoUVMaxDistance: 0.5
   m_AutoUVMaxAngle: 89
   m_LightmapParameters: {fileID: 0}
-  m_SortingLayerID: 0
-  m_SortingLayer: 0
+  m_SortingLayerID: -1606819911
+  m_SortingLayer: 1
   m_SortingOrder: 0
-  m_Sprite: {fileID: 21300000, guid: dfd0796220ae2f844acb66b8578e0b39, type: 3}
+  m_Sprite: {fileID: 21300000, guid: 613940c4ff69290468a43a1683c9ac5f, type: 3}
   m_Color: {r: 1, g: 1, b: 1, a: 1}
   m_FlipX: 0
   m_FlipY: 0
