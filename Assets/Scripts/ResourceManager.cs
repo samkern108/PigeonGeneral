@@ -17,7 +17,11 @@ public class ResourceManager : MonoBehaviour {
 		};
 
 		DontDestroyOnLoad(this.gameObject);
+		
+		isPlayerActive = new bool[Player.PLAYER_COUNT];
 	}
+	
+	public bool[] isPlayerActive;
 
 	public Sprite upArrow, downArrow, leftArrow, rightArrow;
 	public Sprite attackIcon, moveIcon;

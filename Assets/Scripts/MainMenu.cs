@@ -30,7 +30,7 @@ public class MainMenu : MonoBehaviour {
 		||	Input.GetKeyDown(KeyCode.Return)) {
 			ResourceManager.self.PlaySound(SFX.flap);
 			if (currentButton == playButton) {
-				Application.LoadLevel("Game");
+				Application.LoadLevel("Intro");
 			}
 			else if (currentButton == creditsButton) {
 				Application.LoadLevel("Credits");

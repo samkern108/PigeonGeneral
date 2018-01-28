@@ -35,7 +35,7 @@ public class BirdSpawner : MonoBehaviour {
 		GameObject target = Player.livingBirds[playerIndex][targetIndex].gameObject;
 		highlighter.SetTarget(target);
 
-		for (int i = 0; i < Player.UNITS_PER_PLAYER; ++i) {
+		for (int i = 0; i < Player.livingBirds[playerIndex].Count; ++i) {
 			UnitController unit = Player.livingBirds[playerIndex][i];
 			unit.RegisterOnDeath(OnPlayerUnitDeath);
 		}

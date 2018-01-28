@@ -14,3 +14,6 @@ EditorBuildSettings:
   - enabled: 1
     path: Assets/Credits.unity
     guid: ef609e5b54756fe489b9b287e7d556c6
+  - enabled: 1
+    path: Assets/Intro.unity
+    guid: 4c3cde908d57f5240908d068d8eb5503
