@@ -35,7 +35,14 @@ public class UnitController : MonoBehaviour {
 	}
 
 	public void Die() {
+		model.pigeon.sprite = ResourceManager.self.GetPigeonSprite (playerIndex, PigeonPose.Hurt);
+		animate.AnimateToColor (model.pigeon.color, Color.red, 5.0f, Animate.RepeatMode.Once);
+		Invoke ("DestroySelf", 2.0f);
 		onDeath(this);
+	}
+
+	public void DestroySelf() {
+		GameObject.DestroyImmediate (this.gameObject);
 	}
 
 	private void Awake() {
@@ -103,9 +110,9 @@ public class UnitController : MonoBehaviour {
 				if (uc != null) {
 					uc.Die();
 					Player.KillBird (uc);
+				} else {
+					GameObject.DestroyImmediate (obj);
 				}
-
-				GameObject.DestroyImmediate (obj);
 			}
 
 			animate.AnimateToRotation (Quaternion.identity, Quaternion.Euler(0f, 0f, -30), .2f, Animate.RepeatMode.OnceAndBack);
