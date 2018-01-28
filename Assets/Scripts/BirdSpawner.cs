@@ -166,4 +166,15 @@ public class BirdSpawner : MonoBehaviour {
 
 		ResetSelf ();
 	}
+
+
+	// Just to give the appearance that the AI are making choices
+
+	public void SetAIActionIcon() {
+		stagedBird.SetActionSelectionChoice (message.action);
+	}
+
+	public void SetAIDirIcon() {
+		stagedBird.SetDirSelectionChoice (message.dir);
+	}
 }
