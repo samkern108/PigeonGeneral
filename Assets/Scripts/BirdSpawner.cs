@@ -49,8 +49,21 @@ public class BirdSpawner : MonoBehaviour {
 		if (currentSelectedUnit == unit) {
 			// pick new random selection? closest?
 			if (Player.livingBirds[playerIndex].Count == 1) {
-				
+				foreach (Transform t in this.transform) {
+					if (t.gameObject.name.Contains("DeathIcon")) {
+						t.gameObject.SetActive(true);
+					}
+					else {
+						t.gameObject.SetActive(false);
+					}
+				}
+				Destroy(this.gameObject.GetComponent<MessageUI>());
+				Destroy(this.gameObject.GetComponent<PlayerController>());
+				Destroy(this.gameObject.GetComponent<AIPlayer>());
 				Destroy(highlighter.gameObject);
+				if (stagedBird != null) {
+					Destroy(stagedBird.gameObject);
+				}
 				Destroy(this);
 			}
 			else {
