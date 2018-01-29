@@ -51,6 +51,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: af915f0b964a548a7911084e5a1dad1a, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
+  isPlayerActive: 
   upArrow: {fileID: 21300000, guid: 1ac9277a07a07423d88f98aabf3bb711, type: 3}
   downArrow: {fileID: 21300000, guid: 33e8c9bccadff4c53959676d342d3cb5, type: 3}
   leftArrow: {fileID: 21300000, guid: e069c4e318e4643a38b0bf3250c72b40, type: 3}
@@ -88,6 +89,7 @@ MonoBehaviour:
   - {fileID: 21300010, guid: 6fadd2313870f4e4990ec86b4a436d11, type: 3}
   sfxShot: {fileID: 8300000, guid: 21dcbbe9c09a9f84aaad3074571798fe, type: 3}
   sfxWingFlap: {fileID: 8300000, guid: 14dcfd00f543e714b81c03d50cb95af3, type: 3}
+  sfxVictoryFanfare: {fileID: 8300000, guid: 69bb2e9f5011d6c4995fca52a8f7cad6, type: 3}
   sfxBirdCalls:
   - {fileID: 8300000, guid: a8ee755adf982f44dbf4197021c5a82f, type: 3}
   - {fileID: 8300000, guid: 61f6fb142817bca45877f25c8aa14d4f, type: 3}
