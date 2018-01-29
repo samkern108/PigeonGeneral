@@ -3,7 +3,7 @@ using System.Collections;
 using System.IO;
 
 public enum PigeonPose { Idle = 0, Move = 1, Shoot = 2, Hurt = 3, Flex1 = 4, Flex2 = 5 };
-public enum SFX { shot, flap, birdCall };
+public enum SFX { shot, flap, birdCall, victory };
 
 public class ResourceManager : MonoBehaviour {
 
@@ -40,6 +40,7 @@ public class ResourceManager : MonoBehaviour {
 
 	public AudioClip sfxShot;
 	public AudioClip sfxWingFlap;
+	public AudioClip sfxVictoryFanfare;
 	public AudioClip[] sfxBirdCalls;
 
 	public Sprite GetPigeonSprite(int playerIndex, PigeonPose pose) {
@@ -67,6 +68,8 @@ public class ResourceManager : MonoBehaviour {
 				return sfxShot;
 			case SFX.flap:
 				return sfxWingFlap;
+			case SFX.victory:
+				return sfxVictoryFanfare;
 			default:
 			case SFX.birdCall:
 				return sfxBirdCalls[Random.Range(0, sfxBirdCalls.Length)];

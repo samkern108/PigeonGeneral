@@ -98,6 +98,7 @@ public class GameController : MonoBehaviour {
 		}
 
 		if (playersRemaining == 1) {
+			ResourceManager.self.PlaySound(SFX.victory);
 			Camera.main.GetComponent<VictoryCam>().ZoomToTarget(Player.livingBirds[livingPlayerIndex][0].transform);
 		}
 	}
