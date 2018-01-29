@@ -34,6 +34,8 @@ public class GameController : MonoBehaviour {
 		_self = this;
 
 		Camera.main.transform.position = Board.GetBoardCenterWorld() - 10f * Vector3.forward;
+		VictoryCam victoryCam = Camera.main.gameObject.AddComponent<VictoryCam>();
+		victoryCam.speed = 10f;
 
 		// obstacles
 		for (int i = 0; i < 10; ++i) {
@@ -83,6 +85,20 @@ public class GameController : MonoBehaviour {
 			Destroy(ResourceManager.self.gameObject);
 
 			Application.LoadLevel("MainMenu");
+		}
+
+		int playersRemaining = 0;
+		int livingPlayerIndex = -1;
+
+		for (int i = 0; i < Player.livingBirds.Length; ++i) {
+			if (Player.livingBirds[i].Count > 0) {
+				++playersRemaining;
+				livingPlayerIndex = i;
+			}
+		}
+
+		if (playersRemaining == 1) {
+			Camera.main.GetComponent<VictoryCam>().ZoomToTarget(Player.livingBirds[livingPlayerIndex][0].transform);
 		}
 	}
 
