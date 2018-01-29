@@ -7,7 +7,7 @@ public class SpawnLocator : MonoBehaviour {
 	public Vector2 relativePosition;
 	
 	// Update is called once per frame
-	void Update () {
+	/*void Update () {
 		Vector3[] corners = new Vector3[4];
 
 		(this.transform.parent as RectTransform).GetWorldCorners(corners);
@@ -16,5 +16,5 @@ public class SpawnLocator : MonoBehaviour {
 		float y = corners[0].y + relativePosition.y * (corners[2].y - corners[0].y);
 
 		this.transform.position = new Vector3(x, y, 0f);
-	}
+	}*/
 }
