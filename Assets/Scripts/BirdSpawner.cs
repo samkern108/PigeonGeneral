@@ -15,7 +15,7 @@ public class BirdSpawner : MonoBehaviour {
 
 	public GameObject birdPrefab;
 	public UnitHighlighter highlighter;
-	public Transform spawnPoint;
+	private Transform spawnPoint;
 
 	private FlyingBirdUI stagedBird;
 
@@ -30,8 +30,10 @@ public class BirdSpawner : MonoBehaviour {
 		//playerIndex = currentPlayerIndex++;
 		highlighter.SetPlayerIndex (playerIndex);
 
+		spawnPoint = transform.Find ("SpawnPoint");
+
 		// Hacky method for ensuring staged birds are placed after board/camera are ready.
-		Invoke("ResetSelf", .01f);
+		Invoke("ResetSelf", .2f);
 
 		targetIndex = 0;
 		GameObject target = Player.livingBirds[playerIndex][targetIndex].gameObject;
