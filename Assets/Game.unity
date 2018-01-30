@@ -239,7 +239,7 @@ MonoBehaviour:
       m_Calls: []
     m_TypeName: UnityEngine.UI.MaskableGraphic+CullStateChangedEvent, UnityEngine.UI,
       Version=1.0.0.0, Culture=neutral, PublicKeyToken=null
-  m_Sprite: {fileID: 21300000, guid: 52b723d23e5992b43bfc5a2e0ced6f07, type: 3}
+  m_Sprite: {fileID: 21300000, guid: cc66a750cb744334e80f45938b1ffaf3, type: 3}
   m_Type: 0
   m_PreserveAspect: 1
   m_FillCenter: 1
@@ -3110,7 +3110,7 @@ Prefab:
     - target: {fileID: 224525730150957738, guid: d357a3a4c30394159a345ec438828a4e,
         type: 2}
       propertyPath: m_AnchoredPosition.y
-      value: -0.23516655
+      value: -0.23516464
       objectReference: {fileID: 0}
     - target: {fileID: 224251819933023076, guid: d357a3a4c30394159a345ec438828a4e,
         type: 2}
@@ -3444,7 +3444,7 @@ MonoBehaviour:
       m_Calls: []
     m_TypeName: UnityEngine.UI.MaskableGraphic+CullStateChangedEvent, UnityEngine.UI,
       Version=1.0.0.0, Culture=neutral, PublicKeyToken=null
-  m_Sprite: {fileID: 21300000, guid: cc66a750cb744334e80f45938b1ffaf3, type: 3}
+  m_Sprite: {fileID: 21300000, guid: 52b723d23e5992b43bfc5a2e0ced6f07, type: 3}
   m_Type: 0
   m_PreserveAspect: 1
   m_FillCenter: 1

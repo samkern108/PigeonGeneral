@@ -19,8 +19,8 @@ public class IntroController : MonoBehaviour {
 	private Vector2Int[] spawnPositions = new Vector2Int[] {
 		new Vector2Int(1, 6),
 		new Vector2Int(6, 6),
-		new Vector2Int(6, 1),
 		new Vector2Int(1, 1),
+		new Vector2Int(6, 1),
 	};
 
 	private void Awake() {
